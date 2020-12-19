@@ -1,0 +1,4 @@
+{
+    "files.associations": {"*.m": "matlab"},
+    "[matlab]": { "files.encoding": "gb2312" }
+}
