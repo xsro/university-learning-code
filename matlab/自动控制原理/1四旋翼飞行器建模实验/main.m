@@ -1,3 +1,4 @@
+addpath('..\FEIKONG\')
 outCon=[2 0 0;3 0 0;2 0 0];
 inCon=[1 0 0.03;1 0 0.03;1 0.2 0.03];
 [~,sheets] = xlsfinfo('data.xlsx');
