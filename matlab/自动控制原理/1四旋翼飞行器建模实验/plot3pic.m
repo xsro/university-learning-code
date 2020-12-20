@@ -1,9 +1,10 @@
+%绘制俯仰通道的时域响应
+%分别画出不同组的数据对应的图片（3张图）
 [~,sheets] = xlsfinfo('data.xlsx');
 outCon=[2 0 0;3 0 0;2 0 0];
 inCon=[1 0 0.03;1 0 0.03;1 0.2 0.03];
 figure(1);
-N=size(sheets);
-N=N(2);
+N=3;
 
 for i=1:3
     figure(i);
