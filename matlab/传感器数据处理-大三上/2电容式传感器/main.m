@@ -8,14 +8,14 @@ X2=X2(~isnan(X2));
 Y2=Y2(~isnan(Y2));
 
 %线性拟合并绘图
-x=[X1,fliplr(X2)];
-y=[Y1,fliplr(Y2)];
+x=[fliplr(X2),X1];
+y=[fliplr(Y2),Y1];
 p=polyfit(x,y,1);
 f = polyval(p,x); 
 plot(x,y,'o-',x,f,'r-') ;
 xlabel('梁端位移X/mm');
 ylabel('电压V/mV');
-title('实验曲线和最小二乘法拟合曲线');
+title('电容式传感器位移实验曲线和最小二乘法拟合曲线');
 legend('实验曲线','最小二乘法拟合曲线');
 grid
 
