@@ -10,10 +10,11 @@ x=[W,fliplr(W)];
 y=[Uup,fliplr(Udown)];
 p=polyfit(x,y,1);
 f = polyval(p,x); 
-plot(x,y,'x-',x,f,'-') 
+plot(x,y,'o-',x,f,'-') 
 xlabel('重量W/g');
 ylabel('输出电压V/mV');
-title('使用最小二乘法拟合的曲线和实验曲线');
+title('应变片测力系统试验曲线与最小二乘法拟合曲线');
+legend('实验数据','最小二乘法拟合','location','southeast');
 
 %计算灵敏度S：S=ΔV/ΔW(ΔV为输出电压平均变化量；ΔW重量变化量)，
 S=(max(U)-min(U))./(max(W)-min(W));

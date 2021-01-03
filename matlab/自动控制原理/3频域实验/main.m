@@ -29,6 +29,9 @@ for i=1:N
     title(tit(i));
     subplot(2,2,N+i);
      nyquist(G);
+     figure(4);
+     subplot(1,2,i);
+     margin(G)
       
 end
 
