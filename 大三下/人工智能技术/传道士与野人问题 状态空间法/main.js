@@ -85,7 +85,7 @@ function rec(a) {
 }
 rec(初始状态);
 let 总合格路径数 = 0;
-const log=层计数.reduce(
+const log = 层计数.reduce(
     (pre, cur, idx) => {
         if (cur > 0) {
             总合格路径数 += cur;
@@ -97,8 +97,10 @@ const log=层计数.reduce(
         return pre
     }
 );
-const rate=总合格路径数/路径计数;
-console.log(`${log}\n总合格路径数/路径计数=${rate*100}%`)
+const rate = 总合格路径数 / 路径计数;
+console.log(`${log}\n总合格路径数/路径计数=${rate * 100}%`)
 
 
-fs.writeFileSync('mermaid.md', '```mermaid\ngraph TB\n' + 打印文本 + '\n```')
+fs.writeFile('mermaid.md', '```mermaid\ngraph TB\n' + 打印文本 + '\n```', () => {
+    console.log('结果已经写入 mermaid.md')
+})
