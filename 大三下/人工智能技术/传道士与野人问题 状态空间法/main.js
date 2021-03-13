@@ -26,10 +26,18 @@ class 状态空间 {
         this.parent = parent;
         this.层 = 层;
         this.左岸 = 左岸;
-        this.右岸 = new 岸(3 - 左岸.野人, 3 - 左岸.传道士, 1 - 左岸.船)
+        this.右岸 = new 岸(3 - 左岸.野人, 3 - 左岸.传道士, 1 - 左岸.船);
+        this._chain = undefined;
     }
     check() {
-        return (this.左岸.野人 <= this.左岸.传道士 || this.左岸.传道士 === 0)
+        let Dup = false
+        if (!process.argv.includes('--allow-Dup')) {
+            const parent = this.parent.Chain();
+            const [node] = this.toString().split('-');
+            Dup = parent.includes(node)
+        }
+        return !Dup
+            && (this.左岸.野人 <= this.左岸.传道士 || this.左岸.传道士 === 0)
             && (this.右岸.野人 <= this.右岸.传道士 || this.右岸.传道士 === 0)
     }
     success() {
@@ -55,10 +63,14 @@ class 状态空间 {
         return output.filter(val => val);
     }
     toString() {
-        if (this.parent) {
-            return this.parent.toString() + '-->' + this.左岸.toString() + '-' + this.层
-        }
         return this.左岸.toString() + '-' + this.层
+    }
+    Chain() {
+        this._chain = this.toString();
+        if (this.parent) {
+            this._chain = this.parent._chain + '-->' + this._chain;
+        }
+        return this._chain;
     }
 }
 const arg2 = process.argv[2];
@@ -97,9 +109,9 @@ const log = 层计数.reduce(
         return pre
     }
 );
-const rate = 总合格路径数 / 路径计数;
-console.log(`${log}\n总合格路径数/路径计数=${rate * 100}%`)
-
+console.log(log)
+// const rate = 总合格路径数 / 路径计数;
+// console.log(`总合格路径数/路径计数=${总合格路径数}/${路径计数}=${rate * 100}%`)
 
 fs.writeFile('mermaid.md', '```mermaid\ngraph TB\n' + 打印文本 + '\n```', () => {
     console.log('结果已经写入 mermaid.md')
