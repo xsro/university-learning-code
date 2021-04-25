@@ -15,4 +15,6 @@ TI=TI_Tk*Tk;
 TD=TD_Tk*Tk;
 
 %计算pid传递函数
-pidsys=pid(Kp,Kp/TI,Kp*TD,0,T)
+pidsys=pid(Kp,Kp/TI,Kp*TD,0,T);
+pidstd=pidstd(Kp,TI,TD,Inf,T);
+display(pidsys);
