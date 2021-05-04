@@ -7,3 +7,7 @@
 3. 改变PID控制器的参数，观察系统的阶跃响应曲线，记录相对应的性能指标（动态和稳态性能指标）。
 4. 考虑改进的PID控制算法，观察系统的阶跃响应曲线，记录相对应的性能指标（动态和稳态性能指标）。
 
+## 参考链接
+
+- Mathworks.[使用 PID 控制器进行抗饱和控制](https://ww2.mathworks.cn/help/simulink/slref/anti-windup-control-using-a-pid-controller.html)
+
