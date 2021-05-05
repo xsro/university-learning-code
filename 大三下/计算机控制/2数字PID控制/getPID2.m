@@ -15,6 +15,6 @@ TI=TI_Tk*Tk;
 TD=TD_Tk*Tk;
 
 %¼ÆËãpid´«µÝº¯Êý
-pidsys=pid(Kp,Kp/TI,Kp*TD,0,T);
-pidstd=pidstd(Kp,TI,TD,Inf,T);
-display(pidsys);
+pidsys2=pid(Kp,Kp/TI,Kp*TD,0,T);
+pidstd2=pidstd(Kp,TI,TD,Inf,T);
+display(pidsys2);
