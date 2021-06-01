@@ -15,11 +15,9 @@ x
 -1 \\ 1 \\-1
 \end{pmatrix}
 u\\
-
 x(0)=\begin{pmatrix}
    2 \\-1\\1.6
 \end{pmatrix},
-
 y=\begin{pmatrix}
 1 & -1 & 0
 \end{pmatrix}
