@@ -4,7 +4,7 @@
   "description": "> My bullshit written when I am a college student studing Automation.",
   "main": "deploy.js",
   "scripts": {
-    "deploy": "gh-pages -d public"
+    "deploy": "gh-pages -d public -o github"
   },
   "repository": {
     "type": "git",
