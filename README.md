@@ -9,3 +9,9 @@
 ## 文件结构
 
 文件夹以数字加课程名称命名，可能不完全准确，很大一部分代码是简单的实验数据处理，可能不具有参考价值。
+
+## mlx2html and deploy
+
+1. run `convert('public')` in MATLAB to convert mlx to html
+2. open `public/index.html` in browser to view
+3. run `gh-pages -d public` in terminal if installed gh-pages globally or run `npm install` and `npm run deploy`

@@ -4,3 +4,5 @@
 **/_*.*
 #folder for htmls converted from mlx
 public
+#folder for node module
+node_modules
