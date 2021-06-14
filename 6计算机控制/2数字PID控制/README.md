@@ -1,5 +1,7 @@
 # 实验二 数字 PID 控制
 
+![system 2 antiwindup methods from pdf](system2/antiwindup2.png)
+
 ## 实验目的
 
 1．研究PID控制器的参数整定方法。
