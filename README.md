@@ -12,13 +12,13 @@
 
 ## mlx2html and deploy
 
-1. run `convert('public')` in MATLAB to convert mlx to html
+1. run `convert` in MATLAB to convert mlx to html
 2. open `public/index.html` in browser to view
 3. install gh-pages globally and run `gh-pages -d public` in terminal
 
 To be more smoothly, we can run these in MATLAB
 
 ```matlab
-convert('public');
+convert;
 !zsh -l -c 'gh-pages -d public -o github'
 ```
