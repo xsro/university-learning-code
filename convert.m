@@ -20,7 +20,7 @@ for i=1:N
     fileout = strcat(folder,'/',name);
     htmls(i)=name;
     fileout=convertStringsToChars(fileout);
-    %matlab.internal.liveeditor.openAndConvert(mlxloc,fileout);
+    matlab.internal.liveeditor.openAndConvert(mlxloc,fileout);
     fprintf("%3d: converted %s\tfrom %s\n",i,name,mlxsref(i));
 end
 %sort files
