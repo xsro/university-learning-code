@@ -2,3 +2,5 @@
 **/~$*.*
 # can be used to store private files
 **/_*.*
+node_modules
+public
