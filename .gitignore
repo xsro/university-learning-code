@@ -2,3 +2,10 @@
 **/~$*.*
 # can be used to store private files
 **/_*.*
+node_modules
+#folder for htmls converted from mlx
+public
+#folder for node module
+node_modules
+#folder for mac system
+**/.DS_store
