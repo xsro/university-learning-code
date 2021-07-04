@@ -6,3 +6,5 @@
 public
 #folder for node module
 node_modules
+#mac OS
+**/.DS_store
