@@ -5,8 +5,8 @@ def get_dict_from_singal():
     singal_dict['C'] = (0.5, 0.7)
     singal_dict['D'] = (0.7, 1)
     return singal_dict
- 
- 
+
+
 def encoder(singal, singal_dict):
     Low = 0
     High = 1
@@ -15,8 +15,8 @@ def encoder(singal, singal_dict):
         High = Low + CodeRange * singal_dict[s][1]
         Low = Low + CodeRange * singal_dict[s][0]
     return Low
- 
- 
+
+
 def decoder(encoded_number, singal_dict, singal_length):
     singal = []
     while singal_length:
@@ -29,16 +29,14 @@ def decoder(encoded_number, singal_dict, singal_length):
                 break
         singal_length -= 1
     return singal
- 
- 
-def main():
-    singal_dict = get_dict_from_singal()
-    singal = 'CADACDB'
-    ans = encoder(singal, singal_dict)
-    print(ans)
-    singal_rec = decoder(ans, singal_dict, len(singal))
-    print(singal_rec)
- 
- 
-if __name__ == '__main__':
-    main()
+
+
+singal_dict = {}
+singal_dict['a'] = (0, 0.4)
+singal_dict['b'] = (0.4, 0.6)
+singal_dict['c'] = (0.6, 0.7)
+singal_dict['d'] = (0.7, 1)
+singal = 'dacab'
+low = encoder(singal, singal_dict)
+singal_rec = decoder(low, singal_dict, len(singal))
+print(singal_rec)
