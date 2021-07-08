@@ -58,7 +58,7 @@ for (const f of fs.readdirSync(parentDir)) {
                 const s = formerShrink.find(val => val.path == fileRel);
                 const number = s ? s.num : ++count;
                 dst = 'm' + number + '.html'
-                shrink.push({number,fileRel});
+                shrink.push({ number, fileRel });
                 matlab += `${path.join(parentDir, file)}\t${path.join(parentDir, 'public', dst)}\n`
             }
             //process ipynb files to make a link to web
@@ -76,13 +76,19 @@ for (const f of fs.readdirSync(parentDir)) {
                 )
             }
         }
-
-        const contentText = iterms.reduce(
+        const getNum = val => {
+            const p = path.relative(folder, val);
+            const s = p.match(/\d+/);
+            return s ? parseInt(s[0]) : 200
+        }
+        const sortedIterms = iterms.sort((a, b) => getNum(a.fileRelNoExt) - getNum(b.fileRelNoExt))
+        const contentText = sortedIterms.reduce(
             (pre, iterm) => {
                 const linksText = iterm.links.reduce(
                     (prelink, link) => prelink + `<a href=${link.dst}>${link.ext.replace('.', '')}</a>\n`, ""
                 )
-                return pre + `<li>${path.relative(parentDir, iterm.fileRelNoExt)}: ${linksText}</li>`
+                const name = path.relative(folder, iterm.fileRelNoExt);
+                return pre + `<li>${name}: ${linksText}</li>`
             }, ""
         )
         content += '<ol>\n' + contentText + '</ol>';
@@ -92,11 +98,11 @@ for (const f of fs.readdirSync(parentDir)) {
 const html = fs.readFileSync(path.join(parentDir, 'convert/index.html'), { encoding: 'utf-8' });
 fs.writeFileSync(path.join(parentDir, 'public/index.html'),
     html.replace("<div id='content'> </div>", "<div id='content'>" + content + " </div>"));
-const compareShrink=function(a,b){
-    const res= a.number>b.number?1:-1;
+const compareShrink = function (a, b) {
+    const res = a.number > b.number ? 1 : -1;
     return res
 }
-const shrinkText=shrink.sort(compareShrink).map(val=>val.number+'\t'+val.fileRel).join('\n')
+const shrinkText = shrink.sort(compareShrink).map(val => val.number + '\t' + val.fileRel).join('\n')
 fs.writeFileSync(shrinkPath, shrinkText);
 const MatlabTaskPath = path.join(parentDir, 'public', 'matlab_task.txt');
 fs.writeFileSync(MatlabTaskPath, matlab);
