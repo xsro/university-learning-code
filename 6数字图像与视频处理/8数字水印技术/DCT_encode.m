@@ -1,4 +1,4 @@
-function watermarked_image_int=DCT_encode(orig_image,watermark,DCT_coef,k)
+function watermarked_image_int=DCT_encode(orig_image,watermark,DCT_coef,k,pn_sequence_zero)
 
     %设定图像的分块大小为8*8
     block_size=8;
@@ -31,22 +31,12 @@ function watermarked_image_int=DCT_encode(orig_image,watermark,DCT_coef,k)
         end
     end
     %取出方差最大的前n块
-    A=sort(variance);
-    B=A(c*d-n+1:c*d);
+    [~,Aidx]=sort(variance);
+    idx=Aidx(c*d-n+1:c*d);
     %将水印信息嵌入到方差最大的前n块
     variance_o=ones(1,c*d);
-    for g=1:n
-        for h=1:c*d
-            if B(g) == variance(h)
-                variance_o(h)=watermark(g);
-                h=c*d;
-            end
-        end
-    end
+    variance_o(idx)=watermark;
     watermark_vector=variance_o;
-    rand('state',7)
-    %设置MATLAB随机数生成器状态J，生成0，1的伪随机序列
-    pn_sequence_zero=round(rand(1,sum(DCT_coef(:))));
     %嵌入水印
     x=1;y=1;
     for kk=1: m

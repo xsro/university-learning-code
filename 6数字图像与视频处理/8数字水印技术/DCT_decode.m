@@ -1,4 +1,4 @@
-function watermark=DCT_decode(watermarked_image,orig_image,DCT_coef)
+function watermark=DCT_decode(watermarked_image,orig_image,DCT_coef,pn_sequence_zero)
     block_size =8;
     %处理原始载体图像
     Hw = size( watermarked_image,1);
@@ -12,10 +12,7 @@ function watermark=DCT_decode(watermarked_image,orig_image,DCT_coef)
     Ho = size( orig_watermark ,1);
     Wo = size( orig_watermark ,2);
     n = Ho * Wo;
-    %设置相同的随机数生成器状态J,作为检测时的系统密钥K
-    rand('state',7);
-    pn_sequence_zero = round(rand( 1, sum(DCT_coef(:)))); 
-    %生成相同的伪随机序列
+    
     %提取水印
     x=1;
     y=1;
@@ -46,15 +43,9 @@ function watermark=DCT_decode(watermarked_image,orig_image,DCT_coef)
             x=x + block_size ;
         end
     end
-    %相关性大于0.5嵌入0,不大于0.5,则表明曾经被嵌入
-    for kk=1:m
-        if correlation(kk) >0.1
-            watermark_vector(kk) =0;
-        else
-            watermark_vector(kk) =1;
-        end
-    end
-    %watermark_vector=correlation(1:m);
+    %使用相关性作为灰度值
+    %教材上为：大于0.5嵌入0,不大于0.5,则表明曾经被嵌入
+    watermark_vector=correlation(1:m);
     %计算原始图像的方差
     xx=1;
     for j=1:c
