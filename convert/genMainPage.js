@@ -45,7 +45,7 @@ for (const f of fs.readdirSync(parentDir)) {
     const folder = path.join(parentDir, f);
     const s = fs.statSync(folder);
     if (s.isDirectory() && /\d.*/.test(f)) {
-        content += "<h2>" + f + "</h2>\n";
+        content += `\n<h2>${f.substring(0,1)}<a name="${f.substring(1)}" href="#${f.substring(1)}">${f.substring(1)}</a></h2>\n`;
         const files = scan(folder);
         const iterms = []
         for (const file of files) {
