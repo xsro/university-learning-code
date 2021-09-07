@@ -1,7 +1,17 @@
 if exist('public','dir')
-    delete public/*.*
-    rmdir public/
+    if ismac
+        !rm -rf public
+    elseif isunix
+        !rm -rf public
+    elseif ispc
+        !del /F /S /Q public
+    else
+        disp('Platform not supported,try do with matlab')
+        delete public/*.*
+        rmdir public/
+    end
 end
+
 mkdir public
 
 fprintf('node: generate task and index.html\n')
@@ -22,7 +32,7 @@ cd public
 delete matlab_task.txt
 cd ..
 
-if ~exist('nodeploy')
+if exist('deploy','var')
     fprintf("node: deploy folder public/ to web\n")
     if ismac
         !zsh -l -c 'npm run deploy'
