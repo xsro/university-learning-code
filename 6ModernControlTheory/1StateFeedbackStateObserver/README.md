@@ -14,7 +14,10 @@ x
 +\begin{pmatrix}
 -1 \\ 1 \\-1
 \end{pmatrix}
-u\\
+u
+$$
+
+$$
 x(0)=\begin{pmatrix}
    2 \\-1\\1.6
 \end{pmatrix},
