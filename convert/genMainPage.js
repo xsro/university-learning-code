@@ -68,7 +68,7 @@ for (const f of fs.readdirSync(parentDir)) {
             const findItermIdx = iterms.findIndex(
                 val => val.fileRelNoExt === fileRelNoExt
             )
-            if (findItermIdx > 0) {
+            if (findItermIdx >= 0) {
                 iterms[findItermIdx].links.push({ ext, dst })
             } else {
                 iterms.push(
