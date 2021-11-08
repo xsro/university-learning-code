@@ -9,3 +9,6 @@ public
 node_modules
 #folder for mac system
 **/.DS_store
+#cache for simulik modules
+**/*.slxc
+**/slprj/
