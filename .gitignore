@@ -2,6 +2,7 @@
 **/~$*.*
 # can be used to store private files
 **/_*.*
+**/__*/
 node_modules
 #folder for htmls converted from mlx
 public
