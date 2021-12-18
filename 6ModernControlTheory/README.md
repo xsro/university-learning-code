@@ -26,5 +26,5 @@ conda install -c conda-forge slycot #NOTE: the control.matlab.lqr need this modu
 ```sh
 #https://stackoverflow.com/questions/50777849/from-conda-create-requirements-txt-for-pip3
 conda list -e > requirements.txt
-conda create --name <env> --file requirements.txt
+conda create --name controlTheory --file requirements.txt
 ```
