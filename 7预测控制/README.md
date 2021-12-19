@@ -21,6 +21,9 @@
   * Siang Lim.February 2020.[Implementing Dynamic Matrix Control in Python](https://github.com/csianglim/DMC/blob/master/DMC.ipynb)
   * gzykarajan.[MPC_SISO_DMC.ipynb](https://github.com/gzykarajan/SystemIdentification/blob/main/SI_for_GitHub/MPC_SISO_DMC.ipynb)
 
+### papers
+
+- [On the Influence of the Prediction Horizon in Dynamic Matrix Control](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.1061.6531&rep=rep1&type=pdf)
 
 
 
