@@ -26,7 +26,7 @@
             margin-left: 30px;
         }
 
-        #footer {
+        footer {
             text-align: center;
         }
     </style>
@@ -35,9 +35,13 @@
 <body>
     <h1>自动化大学学习代码</h1>
     <details>
-        <summary>info</summary>
+        <summary>简介</summary>
         <a href='https://gitee.com/xsro/university-learning-code'><img
                 src='https://gitee.com/xsro/university-learning-code/badge/star.svg?theme=dark' alt='star'></a>
+        <a href='https://github.com/xsro/university-learning-code'><img alt="GitHub stars"
+            src="https://img.shields.io/github/stars/xsro/university-learning-code?style=flat-square"></a>
+        <a href='https://github.com/xsro/university-learning-code'><img alt="GitHub forks"
+            src="https://img.shields.io/github/forks/xsro/university-learning-code?style=flat-square"></a>
         <a href='https://github.com/xsro/university-learning-code'><img alt="GitHub repo size"
                 src="https://img.shields.io/github/repo-size/xsro/university-learning-code?style=flat-square"></a>
         <img alt="GitHub issues"
@@ -48,11 +52,20 @@
         <br>
     </details>
     <div id='content'> </div>
-    <div id='footer'>
-        <a href='https://gitee.com/xsro/university-learning-code/tree/develop'><img
-                src='https://gitee.com/xsro/university-learning-code/widgets/widget_6.svg'
-                alt='Fork me on Gitee'></img></a>
-    </div>
+    <script> 
+        if(document.location.toString().includes("gitee")){
+                const content=document.getElementById("content")
+                content.innerHTML=content.innerHTML.replace(
+                        /github.com/g,
+                        "gitee.com"
+                    )
+        }
+    </script>
+    <footer>
+        <a href='https://gitee.com/xsro/university-learning-code/tree/develop'>
+            <img src='https://gitee.com/xsro/university-learning-code/widgets/widget_6.svg' alt='Fork me on Gitee'></img>
+        </a>
+    </footer>
 </body>
 
 </html>

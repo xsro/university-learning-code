@@ -63,7 +63,7 @@ for (const f of fs.readdirSync(parentDir)) {
             }
             //process ipynb files to make a link to web
             else if (ext == '.ipynb') {
-                dst = 'https://gitee.com/xsro/university-learning-code/tree/develop/' + fileRel;
+                dst = `https://github.com/xsro/university-learning-code/tree/develop/${fileRel}`;
             };
             const findItermIdx = iterms.findIndex(
                 val => val.fileRelNoExt === fileRelNoExt

@@ -35,11 +35,11 @@ cd ..
 if exist('deploy','var')
     fprintf("node: deploy folder public/ to web\n")
     if ismac
-        !zsh -l -c 'npm run deploy'
+        !zsh -l -c 'npx gh-pages -d public'
     elseif isunix
-        !bash -l -c 'npm run deploy'
+        !bash -l -c 'npx gh-pages -d public'
     elseif ispc
-        !npm run deploy
+        !npx gh-pages -d public
     else
         disp('Platform not supported')
     end
