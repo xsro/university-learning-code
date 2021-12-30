@@ -35,8 +35,17 @@
 
 ### 串级控制系统实验
 
+- en: cascade PID control for dual-tank water system
 - 内容：研究串级控制系统控制规律，调节器作用方式以及串级控制系统的整定方法。
 - 要求：
   - 了解串级控制系统组成原理，串级控制调节器参数的整定与投运方法。
   - 掌握串级控制系统采用不同控制方案的实现过程。
+
+#### 参考
+
+- [Designing Cascade Control System with PI Controllers](https://ww2.mathworks.cn/help/control/ug/designing-cascade-control-system-with-pi-controllers.html)
+- [Cascade Control in Simulink](https://www.youtube.com/watch?v=J1yQa4Nzn7E)
+- [思考题 参考答案](http://www.doczj.com/doc/3968878cce2f0066f53322bb-6.html)
+
+
 
