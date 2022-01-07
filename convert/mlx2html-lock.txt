@@ -30,3 +30,4 @@
 30	6数字图像与视频处理/5数字图像与视频压缩编码原理/arithmeticCoding.mlx
 31	6数字图像与视频处理/9图像与视频的质量评价/qualityAssessment.mlx
 33	7过程控制/大滞后过程采样控制仿真/main.mlx
+34	7过程控制/experiment/control.mlx
