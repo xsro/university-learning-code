@@ -1,0 +1,17 @@
+{
+  "name": "@xsro/convert",
+  "description": "generate static website for this project",
+  "version": "null",
+  "main": "index.js",
+  "type": "module",
+  "repository": "git@github.com:xsro/university-learning-code.git",
+  "author": "Liu Y Chen <xsro@foxmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "deploy": "gh-pages -f -d public"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "gh-pages": "^3.2.3"
+  }
+}

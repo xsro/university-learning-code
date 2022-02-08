@@ -1,45 +1,28 @@
-if exist('public','dir')
-    if ismac
-        !rm -rf public
-    elseif isunix
-        !rm -rf public
-    elseif ispc
-        !del /F /S /Q public
-    else
-        disp('Platform not supported,try do with matlab')
-        delete public/*.*
-        rmdir public/
-    end
-end
-
-mkdir public
-
-fprintf('node: generate task and index.html\n')
+fprintf('node: generate convert task and index.html\n')
 if ismac
-    !zsh -l -c 'node convert/genMainPage.js'
+    !zsh -l -c 'node .\convert\  gen'
 elseif isunix
-    !bash -l -c 'node convert/genMainPage.js'
+    !bash -l -c 'node .\convert\  gen'
 elseif ispc
-    !node convert/genMainPage.js
+    !node .\convert\  gen
 else
     disp('Platform not supported')
 end
 
 fprintf("matlab: convert all mlx to html\n");
-cd convert
-mlx2html
-cd public
-delete matlab_task.txt
-cd ..
+addpath convert
+task='convert/public/matlab_task.txt';
+mlxs2html(task,0)
+delete(task)
 
 if exist('deploy','var')
-    fprintf("node: deploy folder public/ to web\n")
+    fprintf("node: add ga to html and deploy folder public/ to web\n")
     if ismac
-        !zsh -l -c 'npx gh-pages -d public'
+        !zsh -l -c 'node .\convert\ ga deploy'
     elseif isunix
-        !bash -l -c 'npx gh-pages -d public'
+        !bash -l -c 'node .\convert\ ga deploy'
     elseif ispc
-        !npx gh-pages -d public
+        !node .\convert\ ga deploy
     else
         disp('Platform not supported')
     end

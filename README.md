@@ -17,8 +17,7 @@
 
 ## 转换为html
 
-1. 在MATLAB中调用 `convert.m` 来
-   1. 调用[genMainPage.js](convert/genMainPage.js)生成`index.html`并生成matlab任务
-   2. 调用[mlx2html.m](convert/mlx2html.m)，将matlab实时脚本mlx转化为html
-   3. 使用`gh-pages`发布到github-pages
-2. 可以使用浏览器打开 `public/index.html` 预览
+1. 在MATLAB中调用 `convert.m` 
+   1. 调用[mlx2html.m](convert/mlx2html.m)，将matlab实时脚本mlx转化为html
+   2. 使用nodejs生成`index.html`等
+2. 可以使用浏览器打开 `convert/public/index.html` 预览

@@ -1,0 +1,4 @@
+#folder for node module
+node_modules/
+#folder for htmls converted from mlx
+public
