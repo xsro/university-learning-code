@@ -1,0 +1,887 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-B25JJR3WFM"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-B25JJR3WFM");
+    </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1" />
+    <meta name="generator" content="MATLAB 2021b" />
+    <title>State Feedback Observer Design Example</title>
+    <style type="text/css">
+      .rtcContent {
+        padding: 30px;
+      }
+      .S0 {
+        margin: 3px 10px 5px 4px;
+        padding: 0px;
+        line-height: 28.8px;
+        min-height: 0px;
+        white-space: pre-wrap;
+        color: rgb(213, 80, 0);
+        font-family: Helvetica, Arial, sans-serif;
+        font-style: normal;
+        font-size: 24px;
+        font-weight: 400;
+        text-align: left;
+      }
+      .S1 {
+        margin: 2px 10px 9px 4px;
+        padding: 0px;
+        line-height: 21px;
+        min-height: 0px;
+        white-space: pre-wrap;
+        color: rgb(0, 0, 0);
+        font-family: Helvetica, Arial, sans-serif;
+        font-style: normal;
+        font-size: 14px;
+        font-weight: 400;
+        text-align: left;
+      }
+      .S2 {
+        margin: 20px 10px 5px 4px;
+        padding: 0px;
+        line-height: 20px;
+        min-height: 0px;
+        white-space: pre-wrap;
+        color: rgb(60, 60, 60);
+        font-family: Helvetica, Arial, sans-serif;
+        font-style: normal;
+        font-size: 20px;
+        font-weight: 700;
+        text-align: left;
+      }
+      .CodeBlock {
+        background-color: #f7f7f7;
+        margin: 10px 0 10px 0;
+      }
+      .S3 {
+        border-left: 1px solid rgb(233, 233, 233);
+        border-right: 1px solid rgb(233, 233, 233);
+        border-top: 1px solid rgb(233, 233, 233);
+        border-bottom: 0px none rgb(0, 0, 0);
+        border-radius: 4px 4px 0px 0px;
+        padding: 6px 45px 0px 13px;
+        line-height: 17.234px;
+        min-height: 18px;
+        white-space: nowrap;
+        color: rgb(0, 0, 0);
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        font-size: 14px;
+      }
+      .S4 {
+        border-left: 1px solid rgb(233, 233, 233);
+        border-right: 1px solid rgb(233, 233, 233);
+        border-top: 0px none rgb(0, 0, 0);
+        border-bottom: 0px none rgb(0, 0, 0);
+        border-radius: 0px;
+        padding: 0px 45px 0px 13px;
+        line-height: 17.234px;
+        min-height: 18px;
+        white-space: nowrap;
+        color: rgb(0, 0, 0);
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        font-size: 14px;
+      }
+      .S5 {
+        border-left: 1px solid rgb(233, 233, 233);
+        border-right: 1px solid rgb(233, 233, 233);
+        border-top: 0px none rgb(0, 0, 0);
+        border-bottom: 1px solid rgb(233, 233, 233);
+        border-radius: 0px;
+        padding: 0px 45px 4px 13px;
+        line-height: 17.234px;
+        min-height: 18px;
+        white-space: nowrap;
+        color: rgb(0, 0, 0);
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        font-size: 14px;
+      }
+      .S6 {
+        color: rgb(64, 64, 64);
+        padding: 10px 0px 6px 17px;
+        background: rgb(255, 255, 255) none repeat scroll 0% 0% / auto
+          padding-box border-box;
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        font-size: 14px;
+        overflow-x: hidden;
+        line-height: 17.234px;
+      }
+      /* Styling that is common to warnings and errors is in diagnosticOutput.css */
+      .embeddedOutputsErrorElement {
+        min-height: 18px;
+        max-height: 550px;
+      }
+      .embeddedOutputsErrorElement .diagnosticMessage-errorType {
+        overflow: auto;
+      }
+      .embeddedOutputsErrorElement.inlineElement {
+      }
+      .embeddedOutputsErrorElement.rightPaneElement {
+      }
+      /* Styling that is common to warnings and errors is in diagnosticOutput.css */
+      .embeddedOutputsWarningElement {
+        min-height: 18px;
+        max-height: 550px;
+      }
+      .embeddedOutputsWarningElement .diagnosticMessage-warningType {
+        overflow: auto;
+      }
+      .embeddedOutputsWarningElement.inlineElement {
+      }
+      .embeddedOutputsWarningElement.rightPaneElement {
+      }
+      /* Copyright 2015-2019 The MathWorks, Inc. */
+      /In this file,
+      styles
+        are
+        not
+        scoped
+        to
+        rtcContainer
+        since
+        they
+        could
+        be
+        in
+        the
+        Dojo
+        Tooltip
+        /.diagnosticMessage-wrapper {
+        font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+        font-size: 12px;
+      }
+      .diagnosticMessage-wrapper.diagnosticMessage-warningType {
+        color: rgb(255, 100, 0);
+      }
+      .diagnosticMessage-wrapper.diagnosticMessage-warningType a {
+        color: rgb(255, 100, 0);
+        text-decoration: underline;
+      }
+      .diagnosticMessage-wrapper.diagnosticMessage-errorType {
+        color: rgb(230, 0, 0);
+      }
+      .diagnosticMessage-wrapper.diagnosticMessage-errorType a {
+        color: rgb(230, 0, 0);
+        text-decoration: underline;
+      }
+      .diagnosticMessage-wrapper .diagnosticMessage-messagePart,
+      .diagnosticMessage-wrapper .diagnosticMessage-causePart {
+        white-space: pre-wrap;
+      }
+      .diagnosticMessage-wrapper .diagnosticMessage-stackPart {
+        white-space: pre;
+      }
+      .embeddedOutputsTextElement,
+      .embeddedOutputsVariableStringElement {
+        white-space: pre;
+        word-wrap: initial;
+        min-height: 18px;
+        max-height: 550px;
+      }
+      .embeddedOutputsTextElement .textElement,
+      .embeddedOutputsVariableStringElement .textElement {
+        overflow: auto;
+      }
+      .textElement,
+      .rtcDataTipElement .textElement {
+        padding-top: 3px;
+      }
+      .embeddedOutputsTextElement.inlineElement,
+      .embeddedOutputsVariableStringElement.inlineElement {
+      }
+      .inlineElement .textElement {
+      }
+      .embeddedOutputsTextElement.rightPaneElement,
+      .embeddedOutputsVariableStringElement.rightPaneElement {
+        min-height: 16px;
+      }
+      .rightPaneElement .textElement {
+        padding-top: 2px;
+        padding-left: 9px;
+      }
+      .S7 {
+        border-left: 1px solid rgb(233, 233, 233);
+        border-right: 1px solid rgb(233, 233, 233);
+        border-top: 1px solid rgb(233, 233, 233);
+        border-bottom: 1px solid rgb(233, 233, 233);
+        border-radius: 0px;
+        padding: 6px 45px 4px 13px;
+        line-height: 17.234px;
+        min-height: 18px;
+        white-space: nowrap;
+        color: rgb(0, 0, 0);
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        font-size: 14px;
+      }
+      .S8 {
+        margin: 10px 10px 9px 4px;
+        padding: 0px;
+        line-height: 21px;
+        min-height: 0px;
+        white-space: pre-wrap;
+        color: rgb(0, 0, 0);
+        font-family: Helvetica, Arial, sans-serif;
+        font-style: normal;
+        font-size: 14px;
+        font-weight: 400;
+        text-align: left;
+      }
+      .S9 {
+        margin: 15px 10px 5px 4px;
+        padding: 0px;
+        line-height: 18px;
+        min-height: 0px;
+        white-space: pre-wrap;
+        color: rgb(60, 60, 60);
+        font-family: Helvetica, Arial, sans-serif;
+        font-style: normal;
+        font-size: 17px;
+        font-weight: 700;
+        text-align: left;
+      }
+      .S10 {
+        border-left: 1px solid rgb(233, 233, 233);
+        border-right: 1px solid rgb(233, 233, 233);
+        border-top: 1px solid rgb(233, 233, 233);
+        border-bottom: 0px none rgb(0, 0, 0);
+        border-radius: 0px;
+        padding: 6px 45px 0px 13px;
+        line-height: 17.234px;
+        min-height: 18px;
+        white-space: nowrap;
+        color: rgb(0, 0, 0);
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        font-size: 14px;
+      }
+      .variableValue {
+        width: 100% !important;
+      }
+      .embeddedOutputsMatrixElement,
+      .eoOutputWrapper .matrixElement {
+        min-height: 18px;
+        box-sizing: border-box;
+      }
+      .embeddedOutputsMatrixElement .matrixElement,
+      .eoOutputWrapper .matrixElement,
+      .rtcDataTipElement .matrixElement {
+        position: relative;
+      }
+      .matrixElement .variableValue,
+      .rtcDataTipElement .matrixElement .variableValue {
+        white-space: pre;
+        display: inline-block;
+        vertical-align: top;
+        overflow: hidden;
+      }
+      .embeddedOutputsMatrixElement.inlineElement {
+      }
+      .embeddedOutputsMatrixElement.inlineElement .topHeaderWrapper {
+        display: none;
+      }
+      .embeddedOutputsMatrixElement.inlineElement .veTable .body {
+        padding-top: 0 !important;
+        max-height: 100px;
+      }
+      .inlineElement .matrixElement {
+        max-height: 300px;
+      }
+      .embeddedOutputsMatrixElement.rightPaneElement {
+      }
+      .rightPaneElement .matrixElement,
+      .rtcDataTipElement .matrixElement {
+        overflow: hidden;
+        padding-left: 9px;
+      }
+      .rightPaneElement .matrixElement {
+        margin-bottom: -1px;
+      }
+      .embeddedOutputsMatrixElement .matrixElement .valueContainer,
+      .eoOutputWrapper .matrixElement .valueContainer,
+      .rtcDataTipElement .matrixElement .valueContainer {
+        white-space: nowrap;
+        margin-bottom: 3px;
+      }
+      .embeddedOutputsMatrixElement
+        .matrixElement
+        .valueContainer
+        .horizontalEllipsis.hide,
+      .embeddedOutputsMatrixElement .matrixElement .verticalEllipsis.hide,
+      .eoOutputWrapper .matrixElement .valueContainer .horizontalEllipsis.hide,
+      .eoOutputWrapper .matrixElement .verticalEllipsis.hide,
+      .rtcDataTipElement
+        .matrixElement
+        .valueContainer
+        .horizontalEllipsis.hide,
+      .rtcDataTipElement .matrixElement .verticalEllipsis.hide {
+        display: none;
+      }
+      .embeddedOutputsVariableMatrixElement
+        .matrixElement
+        .valueContainer.hideEllipses
+        .verticalEllipsis,
+      .embeddedOutputsVariableMatrixElement
+        .matrixElement
+        .valueContainer.hideEllipses
+        .horizontalEllipsis {
+        display: none;
+      }
+      .embeddedOutputsMatrixElement
+        .matrixElement
+        .valueContainer
+        .horizontalEllipsis,
+      .eoOutputWrapper .matrixElement .valueContainer .horizontalEllipsis {
+        margin-bottom: -3px;
+      }
+      .eoOutputWrapper
+        .embeddedOutputsVariableMatrixElement
+        .matrixElement
+        .valueContainer {
+        cursor: default !important;
+      }
+      .embeddedOutputsVariableElement {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        min-height: 18px;
+        max-height: 250px;
+        overflow: auto;
+      }
+      .variableElement {
+      }
+      .embeddedOutputsVariableElement.inlineElement {
+      }
+      .inlineElement .variableElement {
+      }
+      .embeddedOutputsVariableElement.rightPaneElement {
+        min-height: 16px;
+      }
+      .rightPaneElement .variableElement {
+        padding-top: 2px;
+        padding-left: 9px;
+      }
+      .variableNameElement {
+        margin-bottom: 3px;
+        display: inline-block;
+      }
+      /* * Ellipses as base64 for HTML export. */
+      .matrixElement .horizontalEllipsis,
+      .rtcDataTipElement .matrixElement .horizontalEllipsis {
+        display: inline-block;
+        margin-top: 3px; /* base64 encoded version of images-liveeditor/HEllipsis.png */
+        width: 30px;
+        height: 12px;
+        background-repeat: no-repeat;
+        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAJCAYAAADO1CeCAAAAJUlEQVR42mP4//8/A70xw0i29BUDFPxnAEtTW37wWDqakIa4pQDvOOG89lHX2gAAAABJRU5ErkJggg==");
+      }
+      .matrixElement .verticalEllipsis,
+      .textElement .verticalEllipsis,
+      .rtcDataTipElement .matrixElement .verticalEllipsis,
+      .rtcDataTipElement .textElement .verticalEllipsis {
+        margin-left: 35px; /* base64 encoded version of images-liveeditor/VEllipsis.png */
+        width: 12px;
+        height: 30px;
+        background-repeat: no-repeat;
+        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAZCAYAAAAIcL+IAAAALklEQVR42mP4//8/AzGYgWyFMECMwv8QddRS+P//KyimlmcGUOFoOI6GI/UVAgDnd8Dd4+NCwgAAAABJRU5ErkJggg==");
+      }
+    </style>
+  </head>
+  <body>
+    <div class="rtcContent">
+      <h1 class="S0"><span>State Feedback Observer Design Example</span></h1>
+      <div class="S1">
+        <span>pdf version NJUPT &lt;Modern Control Theory&gt; P131 </span>
+      </div>
+      <h2 class="S2"><span>Question5.7</span></h2>
+      <div class="S1">
+        <span>Consider the following transfer function:</span>
+      </div>
+      <div class="CodeBlock">
+        <div class="inlineWrapper">
+          <div class="S3">
+            <span style="white-space: pre"><span>z=[1 2];</span></span>
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S4">
+            <span style="white-space: pre"><span>p=[-1 2 -3];</span></span>
+          </div>
+        </div>
+        <div class="inlineWrapper outputs">
+          <div class="S5">
+            <span style="white-space: pre"><span>G1=zpk(z,p,1)</span></span>
+          </div>
+          <div class="S6">
+            <div
+              class="inlineElement eoOutputWrapper embeddedOutputsTextElement"
+              uid="9F4C310E"
+              data-testid="output_0"
+              style="
+                width: 1146px;
+                white-space: pre;
+                font-style: normal;
+                color: rgb(64, 64, 64);
+                font-size: 12px;
+              "
+            >
+              <div
+                class="textElement eoOutputContent"
+                data-width="1116"
+                data-height="101"
+                data-hashorizontaloverflow="false"
+                style="
+                  max-height: 261px;
+                  white-space: pre;
+                  font-style: normal;
+                  color: rgb(64, 64, 64);
+                  font-size: 12px;
+                "
+              >
+                G1 = (s-1) (s-2) ----------------- (s+1) (s+3) (s-2)
+                Continuous-time zero/pole/gain model.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="inlineWrapper outputs">
+          <div class="S7">
+            <span style="white-space: pre"
+              ><span>Gt=zpk(1,[-2 -3],1)</span></span
+            >
+          </div>
+          <div class="S6">
+            <div
+              class="inlineElement eoOutputWrapper embeddedOutputsTextElement"
+              uid="06640AEF"
+              data-testid="output_1"
+              style="
+                width: 1146px;
+                white-space: pre;
+                font-style: normal;
+                color: rgb(64, 64, 64);
+                font-size: 12px;
+              "
+            >
+              <div
+                class="textElement eoOutputContent"
+                data-width="1116"
+                data-height="101"
+                data-hashorizontaloverflow="false"
+                style="
+                  max-height: 261px;
+                  white-space: pre;
+                  font-style: normal;
+                  color: rgb(64, 64, 64);
+                  font-size: 12px;
+                "
+              >
+                Gt = (s-1) ----------- (s+2) (s+3) Continuous-time
+                zero/pole/gain model.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="S8">
+        <span
+          >Is it possible to transform G1 to Gt using state feedback
+          control?</span
+        >
+      </div>
+      <h2 class="S2"><span>solution</span></h2>
+      <h3 class="S9"><span>step1. Controlable?</span></h3>
+      <div class="CodeBlock">
+        <div class="inlineWrapper">
+          <div class="S3">
+            <span style="white-space: pre"
+              ><span>[A,B,C,D]=zp2ss(z,p,1);</span></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S4">
+            <span style="white-space: pre"><span>Qc=ctrb(A,B);</span></span>
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S4">
+            <span style="white-space: pre"><span>Qo=obsv(A,C);</span></span>
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S4">
+            <span style="white-space: pre"
+              ><span style="color: rgb(14, 0, 255)">if </span
+              ><span>rank(Qc)&gt;=size(A,2)</span></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S4">
+            <span style="white-space: pre"
+              ><span> disp(</span
+              ><span style="color: rgb(170, 4, 249)"
+                >'Controlable, so can design state feedback control'</span
+              ><span>)</span></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S4">
+            <span style="white-space: pre"
+              ><span style="color: rgb(14, 0, 255)">else </span></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S4">
+            <span style="white-space: pre"
+              ><span> disp(</span
+              ><span style="color: rgb(170, 4, 249)">'Uncontrolable'</span
+              ><span>)</span></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper outputs">
+          <div class="S5">
+            <span style="white-space: pre"
+              ><span style="color: rgb(14, 0, 255)">end</span></span
+            >
+          </div>
+          <div class="S6">
+            <div
+              class="inlineElement eoOutputWrapper embeddedOutputsTextElement"
+              uid="20CE2FB7"
+              data-testid="output_2"
+              style="
+                width: 1146px;
+                white-space: pre;
+                font-style: normal;
+                color: rgb(64, 64, 64);
+                font-size: 12px;
+              "
+            >
+              <div
+                class="textElement eoOutputContent"
+                data-width="1116"
+                data-height="17"
+                data-hashorizontaloverflow="false"
+                style="
+                  max-height: 261px;
+                  white-space: pre;
+                  font-style: normal;
+                  color: rgb(64, 64, 64);
+                  font-size: 12px;
+                "
+              >
+                Controlable, so can design state feedback control
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S10">
+            <span style="white-space: pre"
+              ><span style="color: rgb(14, 0, 255)">if </span
+              ><span>rank(Qo)&gt;=size(A,2)</span></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S4">
+            <span style="white-space: pre"
+              ><span> disp(</span
+              ><span style="color: rgb(170, 4, 249)"
+                >'Observable,so can design output feedback control'</span
+              ><span>);</span></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S4">
+            <span style="white-space: pre"
+              ><span style="color: rgb(14, 0, 255)">else</span></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S4">
+            <span style="white-space: pre"
+              ><span> disp(</span
+              ><span style="color: rgb(170, 4, 249)">'Unobservable'</span
+              ><span>);</span></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper outputs">
+          <div class="S5">
+            <span style="white-space: pre"
+              ><span style="color: rgb(14, 0, 255)">end</span></span
+            >
+          </div>
+          <div class="S6">
+            <div
+              class="inlineElement eoOutputWrapper embeddedOutputsTextElement"
+              uid="D7B0EB51"
+              data-testid="output_3"
+              style="
+                width: 1146px;
+                white-space: pre;
+                font-style: normal;
+                color: rgb(64, 64, 64);
+                font-size: 12px;
+              "
+            >
+              <div
+                class="textElement eoOutputContent"
+                data-width="1116"
+                data-height="17"
+                data-hashorizontaloverflow="false"
+                style="
+                  max-height: 261px;
+                  white-space: pre;
+                  font-style: normal;
+                  color: rgb(64, 64, 64);
+                  font-size: 12px;
+                "
+              >
+                Unobservable
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h3 class="S9"><span>step2. pole placement</span></h3>
+      <div class="CodeBlock">
+        <div class="inlineWrapper">
+          <div class="S3">
+            <span style="white-space: pre"><span>P=[2 -2 -3];</span></span>
+          </div>
+        </div>
+        <div class="inlineWrapper outputs">
+          <div class="S5">
+            <span style="white-space: pre"><span>K=acker(A,B,P)</span></span>
+          </div>
+          <div class="S6">
+            <div
+              class="inlineElement eoOutputWrapper embeddedOutputsVariableMatrixElement"
+              uid="612889AF"
+              data-testid="output_4"
+              data-width="1116"
+              style="
+                width: 1146px;
+                white-space: normal;
+                font-style: normal;
+                color: rgb(64, 64, 64);
+                font-size: 12px;
+              "
+            >
+              <div
+                class="matrixElement veSpecifier saveLoad eoOutputContent"
+                style="
+                  white-space: normal;
+                  font-style: normal;
+                  color: rgb(64, 64, 64);
+                  font-size: 12px;
+                "
+              >
+                <div
+                  class="veVariableName variableNameElement double"
+                  style="
+                    width: 1116px;
+                    white-space: normal;
+                    font-style: normal;
+                    color: rgb(64, 64, 64);
+                    font-size: 12px;
+                  "
+                >
+                  <div
+                    class="headerElementClickToInteract"
+                    style="
+                      white-space: normal;
+                      font-style: normal;
+                      color: rgb(64, 64, 64);
+                      font-size: 12px;
+                    "
+                  >
+                    <span
+                      style="
+                        white-space: normal;
+                        font-style: normal;
+                        color: rgb(64, 64, 64);
+                        font-size: 12px;
+                      "
+                      >K = </span
+                    ><span
+                      class="veVariableValueSummary veMetaSummary"
+                      style="
+                        white-space: normal;
+                        font-style: normal;
+                        color: rgb(179, 179, 179);
+                        font-size: 12px;
+                      "
+                      >1×3</span
+                    >
+                  </div>
+                </div>
+                <div
+                  class="valueContainer"
+                  data-layout='{"columnWidth":73,"totalColumns":"3","totalRows":"1","charsPerColumn":10}'
+                  style="
+                    white-space: nowrap;
+                    font-style: normal;
+                    color: rgb(64, 64, 64);
+                    font-size: 12px;
+                  "
+                >
+                  <div
+                    class="variableValue"
+                    style="
+                      width: 221px;
+                      white-space: pre;
+                      font-style: normal;
+                      color: rgb(64, 64, 64);
+                      font-size: 12px;
+                    "
+                  >
+                    1.0000 -3.0000 -5.1962
+                  </div>
+                  <div
+                    class="horizontalEllipsis hide"
+                    style="
+                      white-space: nowrap;
+                      font-style: normal;
+                      color: rgb(64, 64, 64);
+                      font-size: 12px;
+                    "
+                  ></div>
+                  <div
+                    class="verticalEllipsis hide"
+                    style="
+                      white-space: nowrap;
+                      font-style: normal;
+                      color: rgb(64, 64, 64);
+                      font-size: 12px;
+                    "
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h3 class="S9"><span>step3. state feedback observer system</span></h3>
+      <div class="CodeBlock">
+        <div class="inlineWrapper">
+          <div class="S3">
+            <span style="white-space: pre"><span>A2=A-B*K;</span></span>
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S4">
+            <span style="white-space: pre"
+              ><span style="color: rgb(2, 128, 9)"
+                >% G2ss=ss(A2,B,C,0);</span
+              ></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S4">
+            <span style="white-space: pre"
+              ><span>[z2,p2]=ss2zp(A2,B,C,0);</span></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper outputs">
+          <div class="S5">
+            <span style="white-space: pre"><span>G2=zpk(z2,p2,1)</span></span>
+          </div>
+          <div class="S6">
+            <div
+              class="inlineElement eoOutputWrapper embeddedOutputsTextElement"
+              uid="89A6F796"
+              data-testid="output_5"
+              style="
+                width: 1146px;
+                white-space: pre;
+                font-style: normal;
+                color: rgb(64, 64, 64);
+                font-size: 12px;
+              "
+            >
+              <div
+                class="textElement eoOutputContent"
+                data-width="1116"
+                data-height="101"
+                data-hashorizontaloverflow="false"
+                style="
+                  max-height: 261px;
+                  white-space: pre;
+                  font-style: normal;
+                  color: rgb(64, 64, 64);
+                  font-size: 12px;
+                "
+              >
+                G2 = (s-2) (s-1) ----------------- (s-2) (s+2) (s+3)
+                Continuous-time zero/pole/gain model.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <!-- 
+##### SOURCE BEGIN #####
+%% State Feedback Observer Design Example
+% pdf version NJUPT <Modern Control Theory> P131 
+%% Question5.7
+% Consider the following transfer function:
+
+z=[1 2];
+p=[-1 2 -3];
+G1=zpk(z,p,1)
+Gt=zpk(1,[-2 -3],1)
+%% 
+% Is it possible to transform G1 to Gt using state feedback control?
+%% solution
+% step1.  Controlable?
+
+[A,B,C,D]=zp2ss(z,p,1);
+Qc=ctrb(A,B);
+Qo=obsv(A,C);
+if rank(Qc)>=size(A,2)
+    disp('Controlable, so can design state feedback control')
+else 
+    disp('Uncontrolable')
+end
+if rank(Qo)>=size(A,2)
+    disp('Observable,so can design output feedback control');
+else
+    disp('Unobservable');
+end
+% step2. pole placement
+
+P=[2 -2 -3];
+K=acker(A,B,P)
+% step3. state feedback observer system
+
+A2=A-B*K;
+% G2ss=ss(A2,B,C,0);
+[z2,p2]=ss2zp(A2,B,C,0);
+G2=zpk(z2,p2,1)
+##### SOURCE END #####
+-->
+    </div>
+  </body>
+</html>

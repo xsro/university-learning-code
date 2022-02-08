@@ -1,0 +1,767 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-B25JJR3WFM"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-B25JJR3WFM");
+    </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1" />
+    <meta name="generator" content="MATLAB 2021b" />
+    <title>Stability Analysis</title>
+    <style type="text/css">
+      .rtcContent {
+        padding: 30px;
+      }
+      .S0 {
+        margin: 3px 10px 5px 4px;
+        padding: 0px;
+        line-height: 28.8px;
+        min-height: 0px;
+        white-space: pre-wrap;
+        color: rgb(213, 80, 0);
+        font-family: Helvetica, Arial, sans-serif;
+        font-style: normal;
+        font-size: 24px;
+        font-weight: 400;
+        text-align: left;
+      }
+      .S1 {
+        margin: 2px 10px 9px 4px;
+        padding: 0px;
+        line-height: 21px;
+        min-height: 0px;
+        white-space: pre-wrap;
+        color: rgb(0, 0, 0);
+        font-family: Helvetica, Arial, sans-serif;
+        font-style: normal;
+        font-size: 14px;
+        font-weight: 400;
+        text-align: left;
+      }
+      .CodeBlock {
+        background-color: #f7f7f7;
+        margin: 10px 0 10px 0;
+      }
+      .S2 {
+        border-left: 1px solid rgb(233, 233, 233);
+        border-right: 1px solid rgb(233, 233, 233);
+        border-top: 1px solid rgb(233, 233, 233);
+        border-bottom: 0px none rgb(0, 0, 0);
+        border-radius: 4px 4px 0px 0px;
+        padding: 6px 45px 0px 13px;
+        line-height: 17.234px;
+        min-height: 18px;
+        white-space: nowrap;
+        color: rgb(0, 0, 0);
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        font-size: 14px;
+      }
+      .S3 {
+        border-left: 1px solid rgb(233, 233, 233);
+        border-right: 1px solid rgb(233, 233, 233);
+        border-top: 0px none rgb(0, 0, 0);
+        border-bottom: 0px none rgb(0, 0, 0);
+        border-radius: 0px;
+        padding: 0px 45px 0px 13px;
+        line-height: 17.234px;
+        min-height: 18px;
+        white-space: nowrap;
+        color: rgb(0, 0, 0);
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        font-size: 14px;
+      }
+      .S4 {
+        border-left: 1px solid rgb(233, 233, 233);
+        border-right: 1px solid rgb(233, 233, 233);
+        border-top: 0px none rgb(0, 0, 0);
+        border-bottom: 1px solid rgb(233, 233, 233);
+        border-radius: 0px 0px 4px 4px;
+        padding: 0px 45px 4px 13px;
+        line-height: 17.234px;
+        min-height: 18px;
+        white-space: nowrap;
+        color: rgb(0, 0, 0);
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        font-size: 14px;
+      }
+      .S5 {
+        margin: 20px 10px 5px 4px;
+        padding: 0px;
+        line-height: 20px;
+        min-height: 0px;
+        white-space: pre-wrap;
+        color: rgb(60, 60, 60);
+        font-family: Helvetica, Arial, sans-serif;
+        font-style: normal;
+        font-size: 20px;
+        font-weight: 700;
+        text-align: left;
+      }
+      .S6 {
+        margin: 3px 10px 5px 4px;
+        padding: 0px;
+        line-height: 20px;
+        min-height: 0px;
+        white-space: pre-wrap;
+        color: rgb(60, 60, 60);
+        font-family: Helvetica, Arial, sans-serif;
+        font-style: normal;
+        font-size: 20px;
+        font-weight: 700;
+        text-align: left;
+      }
+      .S7 {
+        margin: 10px 0px 20px;
+        padding-left: 0px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 14px;
+      }
+      .S8 {
+        margin-left: 56px;
+        line-height: 21px;
+        min-height: 0px;
+        text-align: left;
+        white-space: pre-wrap;
+      }
+      .S9 {
+        border-left: 1px solid rgb(233, 233, 233);
+        border-right: 1px solid rgb(233, 233, 233);
+        border-top: 0px none rgb(0, 0, 0);
+        border-bottom: 1px solid rgb(233, 233, 233);
+        border-radius: 0px;
+        padding: 0px 45px 4px 13px;
+        line-height: 17.234px;
+        min-height: 18px;
+        white-space: nowrap;
+        color: rgb(0, 0, 0);
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        font-size: 14px;
+      }
+      .S10 {
+        color: rgb(64, 64, 64);
+        padding: 10px 0px 6px 17px;
+        background: rgb(255, 255, 255) none repeat scroll 0% 0% / auto
+          padding-box border-box;
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        font-size: 14px;
+        overflow-x: hidden;
+        line-height: 17.234px;
+      }
+      /* Styling that is common to warnings and errors is in diagnosticOutput.css */
+      .embeddedOutputsErrorElement {
+        min-height: 18px;
+        max-height: 550px;
+      }
+      .embeddedOutputsErrorElement .diagnosticMessage-errorType {
+        overflow: auto;
+      }
+      .embeddedOutputsErrorElement.inlineElement {
+      }
+      .embeddedOutputsErrorElement.rightPaneElement {
+      }
+      /* Styling that is common to warnings and errors is in diagnosticOutput.css */
+      .embeddedOutputsWarningElement {
+        min-height: 18px;
+        max-height: 550px;
+      }
+      .embeddedOutputsWarningElement .diagnosticMessage-warningType {
+        overflow: auto;
+      }
+      .embeddedOutputsWarningElement.inlineElement {
+      }
+      .embeddedOutputsWarningElement.rightPaneElement {
+      }
+      /* Copyright 2015-2019 The MathWorks, Inc. */
+      /In this file,
+      styles
+        are
+        not
+        scoped
+        to
+        rtcContainer
+        since
+        they
+        could
+        be
+        in
+        the
+        Dojo
+        Tooltip
+        /.diagnosticMessage-wrapper {
+        font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+        font-size: 12px;
+      }
+      .diagnosticMessage-wrapper.diagnosticMessage-warningType {
+        color: rgb(255, 100, 0);
+      }
+      .diagnosticMessage-wrapper.diagnosticMessage-warningType a {
+        color: rgb(255, 100, 0);
+        text-decoration: underline;
+      }
+      .diagnosticMessage-wrapper.diagnosticMessage-errorType {
+        color: rgb(230, 0, 0);
+      }
+      .diagnosticMessage-wrapper.diagnosticMessage-errorType a {
+        color: rgb(230, 0, 0);
+        text-decoration: underline;
+      }
+      .diagnosticMessage-wrapper .diagnosticMessage-messagePart,
+      .diagnosticMessage-wrapper .diagnosticMessage-causePart {
+        white-space: pre-wrap;
+      }
+      .diagnosticMessage-wrapper .diagnosticMessage-stackPart {
+        white-space: pre;
+      }
+      .embeddedOutputsTextElement,
+      .embeddedOutputsVariableStringElement {
+        white-space: pre;
+        word-wrap: initial;
+        min-height: 18px;
+        max-height: 550px;
+      }
+      .embeddedOutputsTextElement .textElement,
+      .embeddedOutputsVariableStringElement .textElement {
+        overflow: auto;
+      }
+      .textElement,
+      .rtcDataTipElement .textElement {
+        padding-top: 3px;
+      }
+      .embeddedOutputsTextElement.inlineElement,
+      .embeddedOutputsVariableStringElement.inlineElement {
+      }
+      .inlineElement .textElement {
+      }
+      .embeddedOutputsTextElement.rightPaneElement,
+      .embeddedOutputsVariableStringElement.rightPaneElement {
+        min-height: 16px;
+      }
+      .rightPaneElement .textElement {
+        padding-top: 2px;
+        padding-left: 9px;
+      }
+      .S11 {
+        margin: 3px 10px 5px 4px;
+        padding: 0px;
+        line-height: 18px;
+        min-height: 0px;
+        white-space: pre-wrap;
+        color: rgb(60, 60, 60);
+        font-family: Helvetica, Arial, sans-serif;
+        font-style: normal;
+        font-size: 17px;
+        font-weight: 700;
+        text-align: left;
+      }
+      .S12 {
+        margin: 10px 10px 9px 4px;
+        padding: 0px;
+        line-height: 21px;
+        min-height: 0px;
+        white-space: pre-wrap;
+        color: rgb(0, 0, 0);
+        font-family: Helvetica, Arial, sans-serif;
+        font-style: normal;
+        font-size: 14px;
+        font-weight: 400;
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="rtcContent">
+      <h1 class="S0"><span>Stability Analysis</span></h1>
+      <div class="S1">
+        <span
+          >Consider the following State Space Model and analyse its
+          stability.</span
+        >
+      </div>
+      <div class="CodeBlock">
+        <div class="inlineWrapper">
+          <div class="S2">
+            <span style="white-space: pre"
+              ><span>A=[1 -3.5 4.5;2 -4.5 4.5;-1 1.5 -2.5];</span></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S3">
+            <span style="white-space: pre"
+              ><span>B=[-0.5 -0.5 -0.5]';</span></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S3">
+            <span style="white-space: pre"><span>C=[1 1 0];</span></span>
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S3">
+            <span style="white-space: pre"><span>D=1;</span></span>
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S4">
+            <span style="white-space: pre"><span>G=ss(A,B,C,D);</span></span>
+          </div>
+        </div>
+      </div>
+      <h2 class="S5"><span>Lyapunov First Method</span></h2>
+      <h2 class="S6"><span>Lyapunov stable?</span></h2>
+      <div class="S1">
+        <span style="font-weight: bold">Theorem 1: (MCT p136)</span>
+      </div>
+      <div class="S1">
+        <span
+          >For LTI system, the sufficient and necessary condition of equilibrium
+          being Lyapunov stable is that
+        </span>
+      </div>
+      <ol class="S7">
+        <li class="S8">
+          <span>All the eigenvalues of matrix 𝑨 have negative real part.</span>
+        </li>
+        <li class="S8">
+          <span
+            >Eigenvalue with zero real part is the unique root of minimal
+            polynomial</span
+          >
+        </li>
+      </ol>
+      <div class="CodeBlock">
+        <div class="inlineWrapper">
+          <div class="S2">
+            <span style="white-space: pre"><span>lambda=eig(A);</span></span>
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S3">
+            <span style="white-space: pre"
+              ><span style="color: rgb(14, 0, 255)">if </span
+              ><span>sum(lambda&lt;0) == length(lambda)</span></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S3">
+            <span style="white-space: pre"
+              ><span> fprintf(</span
+              ><span style="color: rgb(170, 4, 249)"
+                >'this system is lyapunov stable'</span
+              ><span>)</span></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S3">
+            <span style="white-space: pre"
+              ><span style="color: rgb(14, 0, 255)">else</span></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S3">
+            <span style="white-space: pre"
+              ><span> fprintf(</span
+              ><span style="color: rgb(170, 4, 249)"
+                >'this system is not lyapunov stable'</span
+              ><span>)</span></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper outputs">
+          <div class="S9">
+            <span style="white-space: pre"
+              ><span style="color: rgb(14, 0, 255)">end</span></span
+            >
+          </div>
+          <div class="S10">
+            <div
+              class="inlineElement eoOutputWrapper embeddedOutputsTextElement"
+              uid="B80C916D"
+              data-testid="output_0"
+              style="
+                width: 1146px;
+                white-space: pre;
+                font-style: normal;
+                color: rgb(64, 64, 64);
+                font-size: 12px;
+              "
+            >
+              <div
+                class="textElement eoOutputContent"
+                data-width="1116"
+                data-height="17"
+                data-hashorizontaloverflow="false"
+                style="
+                  max-height: 261px;
+                  white-space: pre;
+                  font-style: normal;
+                  color: rgb(64, 64, 64);
+                  font-size: 12px;
+                "
+              >
+                this system is lyapunov stable
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h3 class="S11"><span>BIBO stable?</span></h3>
+      <div class="S1">
+        <span style="font-weight: bold">Theorem 3: </span
+        ><span
+          >The sufficient and necessary condition of LTI system being BIBO
+          stable is that the poles of TF are located in left part of </span
+        ><span style="font-style: italic">s</span
+        ><span> domain. (MCT p137)</span>
+      </div>
+      <div class="CodeBlock">
+        <div class="inlineWrapper">
+          <div class="S2">
+            <span style="white-space: pre"
+              ><span>p=pzmap(G);</span
+              ><span style="color: rgb(2, 128, 9)"
+                >%get poles of the system</span
+              ></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S3">
+            <span style="white-space: pre"
+              ><span style="color: rgb(14, 0, 255)">if </span
+              ><span>sum(real(p)&lt;0) == length(p)</span></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S3">
+            <span style="white-space: pre"
+              ><span> fprintf(</span
+              ><span style="color: rgb(170, 4, 249)"
+                >'the system is stable \nwith %dpoles and %d possitive
+                poles'</span
+              ><span>,length(p),sum(real(p)&gt;0))</span></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S3">
+            <span style="white-space: pre"
+              ><span style="color: rgb(14, 0, 255)">else </span></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S3">
+            <span style="white-space: pre"
+              ><span> fprintf(</span
+              ><span style="color: rgb(170, 4, 249)"
+                >'the system is unstable\nwith %dpoles and %d possitive
+                poles'</span
+              ><span>,length(p),sum(real(p)&gt;0))</span></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper outputs">
+          <div class="S9">
+            <span style="white-space: pre"
+              ><span style="color: rgb(14, 0, 255)">end</span></span
+            >
+          </div>
+          <div class="S10">
+            <div
+              class="inlineElement eoOutputWrapper embeddedOutputsTextElement"
+              uid="1F8976DF"
+              data-testid="output_1"
+              style="
+                width: 1146px;
+                white-space: pre;
+                font-style: normal;
+                color: rgb(64, 64, 64);
+                font-size: 12px;
+              "
+            >
+              <div
+                class="textElement eoOutputContent"
+                data-width="1116"
+                data-height="31"
+                data-hashorizontaloverflow="false"
+                style="
+                  max-height: 261px;
+                  white-space: pre;
+                  font-style: normal;
+                  color: rgb(64, 64, 64);
+                  font-size: 12px;
+                "
+              >
+                the system is stable with 3poles and 0 possitive poles
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2 class="S6"><span>Lyapunov Second Method</span></h2>
+      <h2 class="S6">
+        <span>Lyapunov stability theorem of linear system</span>
+      </h2>
+      <div class="S1">
+        <span
+          >Remark 1: For any given positive definite matrix 𝑸, matrix 𝑷 which
+          satisfies equation </span
+        ><span texencoding="A^TP+PA=-Q" style="vertical-align: -5px"
+          ><img
+            src="data:image/png;base64,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"
+            width="105.5"
+            height="22" /></span
+        ><span>
+          is unique. The system is asymptotically stable when 𝑷 is positive
+          definite.(MCT p146)</span
+        >
+      </div>
+      <div class="CodeBlock">
+        <div class="inlineWrapper">
+          <div class="S2">
+            <span style="white-space: pre"><span>Q=eye(3,3);</span></span>
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S3">
+            <span style="white-space: pre"
+              ><span style="color: rgb(2, 128, 9)"
+                >%solve for the matrix P</span
+              ></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S3">
+            <span style="white-space: pre"
+              ><span style="color: rgb(2, 128, 9)"
+                >%NOTE: here in matlab the function `lyap` solves equation</span
+              ></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S3">
+            <span style="white-space: pre"
+              ><span style="color: rgb(2, 128, 9)"
+                >%AP+PA'=-Q so we need transpose A first</span
+              ></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S4">
+            <span style="white-space: pre"><span>P=lyap(A',Q);</span></span>
+          </div>
+        </div>
+      </div>
+      <div class="S12">
+        <span>check the matrix P is positive . </span
+        ><a
+          href="https://ww2.mathworks.cn/help/matlab/math/determine-whether-matrix-is-positive-definite.html?lang=en"
+          ><span
+            >Determine Whether Matrix Is Symmetric Positive Definite</span
+          ></a
+        >
+      </div>
+      <div class="CodeBlock">
+        <div class="inlineWrapper">
+          <div class="S2">
+            <span style="white-space: pre"
+              ><span style="color: rgb(14, 0, 255)">for </span
+              ><span>i=1:length(A)</span></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S3">
+            <span style="white-space: pre"
+              ><span> </span><span style="color: rgb(14, 0, 255)">if </span
+              ><span>det(P(1:i,1:i))&lt;=0</span></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S3">
+            <span style="white-space: pre"
+              ><span> </span><span style="color: rgb(14, 0, 255)">break</span
+              ><span>;</span></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S3">
+            <span style="white-space: pre"
+              ><span> </span
+              ><span style="color: rgb(14, 0, 255)">end</span></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S3">
+            <span style="white-space: pre"
+              ><span style="color: rgb(14, 0, 255)">end</span></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S3">
+            <span style="white-space: pre"
+              ><span style="color: rgb(14, 0, 255)">if </span
+              ><span>i==length(A)</span></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S3">
+            <span style="white-space: pre"
+              ><span> fprintf(</span
+              ><span style="color: rgb(170, 4, 249)"
+                >'The system is stable'</span
+              ><span>)</span></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S3">
+            <span style="white-space: pre"
+              ><span style="color: rgb(14, 0, 255)">else</span></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S3">
+            <span style="white-space: pre"
+              ><span> fprintf(</span
+              ><span style="color: rgb(170, 4, 249)"
+                >'The system is not stable'</span
+              ><span>)</span></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper outputs">
+          <div class="S9">
+            <span style="white-space: pre"
+              ><span style="color: rgb(14, 0, 255)">end</span></span
+            >
+          </div>
+          <div class="S10">
+            <div
+              class="inlineElement eoOutputWrapper embeddedOutputsTextElement"
+              uid="18B369F3"
+              data-testid="output_2"
+              style="
+                width: 1146px;
+                white-space: pre;
+                font-style: normal;
+                color: rgb(64, 64, 64);
+                font-size: 12px;
+              "
+            >
+              <div
+                class="textElement eoOutputContent"
+                data-width="1116"
+                data-height="17"
+                data-hashorizontaloverflow="false"
+                style="
+                  max-height: 261px;
+                  white-space: pre;
+                  font-style: normal;
+                  color: rgb(64, 64, 64);
+                  font-size: 12px;
+                "
+              >
+                The system is stable
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="S12"><span> </span></div>
+      <br />
+      <!-- 
+##### SOURCE BEGIN #####
+%% Stability Analysis
+% Consider the following State Space Model and analyse its stability.
+
+A=[1 -3.5 4.5;2 -4.5 4.5;-1 1.5 -2.5];
+B=[-0.5 -0.5 -0.5]';
+C=[1 1 0];
+D=1;
+G=ss(A,B,C,D);
+%% Lyapunov First Method
+%% Lyapunov stable?
+% *Theorem 1:  (MCT p136)*
+% 
+% For LTI system, the sufficient and necessary condition of equilibrium being 
+% Lyapunov stable is that 
+%% 
+% # All the eigenvalues of matrix 𝑨 have negative real part.
+% # Eigenvalue with zero real part is the unique root of minimal polynomial
+
+lambda=eig(A);
+if sum(lambda<0) == length(lambda)
+    fprintf('this system is lyapunov stable')
+else
+    fprintf('this system is not lyapunov stable')
+end
+% BIBO stable?
+% *Theorem 3:* The sufficient and necessary condition of LTI system being BIBO 
+% stable is that the  poles of TF are located in left part of _s_ domain.  (MCT 
+% p137)
+
+p=pzmap(G);%get poles of the system
+if sum(real(p)<0) == length(p)
+    fprintf('the system is stable  \nwith %dpoles and %d possitive poles',length(p),sum(real(p)>0))
+else 
+    fprintf('the system is unstable\nwith %dpoles and %d possitive poles',length(p),sum(real(p)>0))
+end
+%% Lyapunov Second Method
+%% Lyapunov stability theorem of linear system
+% Remark 1: For any given positive definite matrix 𝑸, matrix 𝑷 which satisfies 
+% equation  $A^TP+PA=-Q$ is unique. The system is asymptotically stable when 𝑷  
+% is positive definite.(MCT p146)
+
+Q=eye(3,3);
+%solve for the matrix P
+%NOTE: here in matlab the function `lyap` solves equation
+%AP+PA'=-Q so we need transpose A first
+P=lyap(A',Q);
+%% 
+% check the matrix P is positive . <https://ww2.mathworks.cn/help/matlab/math/determine-whether-matrix-is-positive-definite.html?lang=en 
+% Determine Whether Matrix Is Symmetric Positive Definite>
+
+for i=1:length(A)
+    if det(P(1:i,1:i))<=0
+        break;
+    end
+end
+if i==length(A)
+    fprintf('The system is stable')
+else
+    fprintf('The system is not stable')
+end
+%% 
+%
+##### SOURCE END #####
+-->
+    </div>
+  </body>
+</html>

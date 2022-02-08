@@ -1,0 +1,1076 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-B25JJR3WFM"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-B25JJR3WFM");
+    </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1" />
+    <meta name="generator" content="MATLAB 2021b" />
+    <title>传感器作业1-6</title>
+    <style type="text/css">
+      .rtcContent {
+        padding: 30px;
+      }
+      .S0 {
+        margin: 3px 10px 5px 4px;
+        padding: 0px;
+        line-height: 28.8px;
+        min-height: 0px;
+        white-space: pre-wrap;
+        color: rgb(213, 80, 0);
+        font-family: Helvetica, Arial, sans-serif;
+        font-style: normal;
+        font-size: 24px;
+        font-weight: 400;
+        text-align: left;
+      }
+      .CodeBlock {
+        background-color: #f7f7f7;
+        margin: 10px 0 10px 0;
+      }
+      .S1 {
+        border-left: 1px solid rgb(233, 233, 233);
+        border-right: 1px solid rgb(233, 233, 233);
+        border-top: 1px solid rgb(233, 233, 233);
+        border-bottom: 0px none rgb(0, 0, 0);
+        border-radius: 4px 4px 0px 0px;
+        padding: 6px 45px 0px 13px;
+        line-height: 17.234px;
+        min-height: 18px;
+        white-space: nowrap;
+        color: rgb(0, 0, 0);
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        font-size: 14px;
+      }
+      .S2 {
+        border-left: 1px solid rgb(233, 233, 233);
+        border-right: 1px solid rgb(233, 233, 233);
+        border-top: 0px none rgb(0, 0, 0);
+        border-bottom: 0px none rgb(0, 0, 0);
+        border-radius: 0px;
+        padding: 0px 45px 0px 13px;
+        line-height: 17.234px;
+        min-height: 18px;
+        white-space: nowrap;
+        color: rgb(0, 0, 0);
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        font-size: 14px;
+      }
+      .S3 {
+        border-left: 1px solid rgb(233, 233, 233);
+        border-right: 1px solid rgb(233, 233, 233);
+        border-top: 0px none rgb(0, 0, 0);
+        border-bottom: 1px solid rgb(233, 233, 233);
+        border-radius: 0px 0px 4px 4px;
+        padding: 0px 45px 4px 13px;
+        line-height: 17.234px;
+        min-height: 18px;
+        white-space: nowrap;
+        color: rgb(0, 0, 0);
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        font-size: 14px;
+      }
+      .S4 {
+        margin: 10px 10px 9px 4px;
+        padding: 0px;
+        line-height: 21px;
+        min-height: 0px;
+        white-space: pre-wrap;
+        color: rgb(0, 0, 0);
+        font-family: Helvetica, Arial, sans-serif;
+        font-style: normal;
+        font-size: 14px;
+        font-weight: 400;
+        text-align: left;
+      }
+      .S5 {
+        border-left: 1px solid rgb(233, 233, 233);
+        border-right: 1px solid rgb(233, 233, 233);
+        border-top: 1px solid rgb(233, 233, 233);
+        border-bottom: 1px solid rgb(233, 233, 233);
+        border-radius: 4px;
+        padding: 6px 45px 4px 13px;
+        line-height: 17.234px;
+        min-height: 18px;
+        white-space: nowrap;
+        color: rgb(0, 0, 0);
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        font-size: 14px;
+      }
+      .S6 {
+        border-left: 1px solid rgb(233, 233, 233);
+        border-right: 1px solid rgb(233, 233, 233);
+        border-top: 0px none rgb(0, 0, 0);
+        border-bottom: 1px solid rgb(233, 233, 233);
+        border-radius: 0px;
+        padding: 0px 45px 4px 13px;
+        line-height: 17.234px;
+        min-height: 18px;
+        white-space: nowrap;
+        color: rgb(0, 0, 0);
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        font-size: 14px;
+      }
+      .S7 {
+        color: rgb(64, 64, 64);
+        padding: 10px 0px 6px 17px;
+        background: rgb(255, 255, 255) none repeat scroll 0% 0% / auto
+          padding-box border-box;
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        font-size: 14px;
+        overflow-x: hidden;
+        line-height: 17.234px;
+      }
+      .embeddedOutputsVariableTableElement .ClientViewDiv table tr {
+        height: 22px;
+        white-space: nowrap;
+      }
+      .embeddedOutputsVariableTableElement .ClientViewDiv table tr td,
+      .embeddedOutputsVariableTableElement .ClientViewDiv table tr th {
+        background-color: white;
+        text-overflow: ellipsis;
+        font-family: "Arial", sans-serif;
+        font-size: 12px;
+        overflow: hidden;
+      }
+      .embeddedOutputsVariableTableElement .ClientViewDiv table tr span {
+        text-overflow: ellipsis;
+        padding: 3px;
+      }
+      .embeddedOutputsVariableTableElement .ClientViewDiv table tr th {
+        color: rgba(0, 0, 0, 0.5);
+        padding: 3px;
+        font-size: 9px;
+      }
+      .S8 {
+        border-left: 1px solid rgb(233, 233, 233);
+        border-right: 1px solid rgb(233, 233, 233);
+        border-top: 1px solid rgb(233, 233, 233);
+        border-bottom: 1px solid rgb(233, 233, 233);
+        border-radius: 0px 0px 4px 4px;
+        padding: 6px 45px 4px 13px;
+        line-height: 17.234px;
+        min-height: 18px;
+        white-space: nowrap;
+        color: rgb(0, 0, 0);
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="rtcContent">
+      <h1 class="S0"><span>传感器作业1-6</span></h1>
+      <div class="CodeBlock">
+        <div class="inlineWrapper">
+          <div class="S1">
+            <span style="white-space: pre"
+              ><span>x=[0,0.5,1.0,1.5,2.0,2.5];</span></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S2">
+            <span style="white-space: pre"
+              ><span
+                >y1f=[0.0020,0.2015,0.4005,0.6000,0.7995,1.0000];</span
+              ></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S2">
+            <span style="white-space: pre"
+              ><span
+                >y1b=[0.0030,0.2020,0.4020,0.6010,0.8005,1.0000];</span
+              ></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S2">
+            <span style="white-space: pre"
+              ><span
+                >y2f=[0.0025,0.2020,0.4010,0.6000,0.7995,0.9995];</span
+              ></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S2">
+            <span style="white-space: pre"
+              ><span
+                >y2b=[0.0035,0.2030,0.4020,0.6015,0.8005,0.9995];</span
+              ></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S2">
+            <span style="white-space: pre"
+              ><span
+                >y3f=[0.0035,0.2020,0.4010,0.6000,0.7995,0.9990];</span
+              ></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S3">
+            <span style="white-space: pre"
+              ><span
+                >y3b=[0.0040,0.2030,0.4020,0.6010,0.8005,0.9990];</span
+              ></span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="S4"><span>求出平均值：</span></div>
+      <div class="CodeBlock">
+        <div class="inlineWrapper">
+          <div class="S5">
+            <span style="white-space: pre"
+              ><span>y=mean([y1f;y1b;y2f;y2b;y3f;y3b]);</span></span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="S4"><span>使用“端点直线法”</span></div>
+      <div class="CodeBlock">
+        <div class="inlineWrapper">
+          <div class="S1">
+            <span style="white-space: pre"
+              ><span>k=(y(end)-y(1))/(x(end)-x(1));</span></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S2">
+            <span style="white-space: pre"><span>b=y(1)-k*x(1);</span></span>
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S3">
+            <span style="white-space: pre"><span>y_1=k*x+b;</span></span>
+          </div>
+        </div>
+      </div>
+      <div class="S4"><span>使用最小二乘法</span></div>
+      <div class="CodeBlock">
+        <div class="inlineWrapper">
+          <div class="S1">
+            <span style="white-space: pre"
+              ><span>coefficient=polyfit(x,y,1) ;</span></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S2">
+            <span style="white-space: pre"
+              ><span>k=coefficient(1);b=coefficient(2);</span></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S3">
+            <span style="white-space: pre"><span>y_2=k*x+b;</span></span>
+          </div>
+        </div>
+      </div>
+      <div class="S4"><span>数据</span></div>
+      <div class="CodeBlock">
+        <div class="inlineWrapper">
+          <div class="S1">
+            <span style="white-space: pre"
+              ><span>name={</span
+              ><span style="color: rgb(170, 4, 249)">'压力'</span><span>;</span
+              ><span style="color: rgb(170, 4, 249)">'原始数据'</span
+              ><span>;</span
+              ><span style="color: rgb(170, 4, 249)">'端点直线法'</span
+              ><span>;</span
+              ><span style="color: rgb(170, 4, 249)">'最小二乘法'</span
+              ><span>};</span></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S2">
+            <span style="white-space: pre"
+              ><span>data=table([x;y;y_1;y_2]);</span></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper outputs">
+          <div class="S6">
+            <span style="white-space: pre"
+              ><span>data.Properties.RowNames = name</span></span
+            >
+          </div>
+          <div class="S7">
+            <div
+              class="inlineElement eoOutputWrapper embeddedOutputsVariableTableElement"
+              uid="5515E723"
+              data-testid="output_0"
+              style="width: calc(100% - 5px)"
+            >
+              <div
+                class="ClientDocument veSpecifier table DataFitToViewport"
+                id="variableeditor_client_Document_0"
+                widgetid="variableeditor_client_Document_0"
+                tabindex="0"
+              >
+                <div
+                  class="summaryBar"
+                  style="
+                    font-size: 12px;
+                    font-family: Consolas, Inconsolata, Menlo, monospace;
+                  "
+                >
+                  <span>data = </span
+                  ><span style="color: rgb(179, 179, 179); font-style: normal"
+                    >4×1 table
+                  </span>
+                </div>
+                <div
+                  id="variableeditor_TableViewModel_0"
+                  widgetid="variableeditor_TableViewModel_0"
+                  class="table ClientViewDiv hasSummaryBar"
+                  data-viewid="__1"
+                  style="width: 100%; overflow: auto"
+                >
+                  <table
+                    cellspacing="0"
+                    style="border-spacing: 0px; border-collapse: collapse"
+                  >
+                    <thead>
+                      <tr>
+                        <th
+                          style="
+                            text-overflow: ellipsis;
+                            font-family: Arial, sans-serif;
+                            font-size: 12px;
+                            overflow: hidden;
+                            padding: 6px 3px 3px;
+                            width: 34px;
+                            text-align: left;
+                            border: 1px solid rgb(191, 191, 191);
+                            background-color: rgb(245, 245, 245);
+                            color: rgba(0, 0, 0, 0.75);
+                            font-weight: 700;
+                            box-sizing: border-box;
+                          "
+                        >
+                          <span>&nbsp;</span>
+                        </th>
+                        <th
+                          colspan="6"
+                          style="
+                            text-overflow: ellipsis;
+                            font-family: Arial, sans-serif;
+                            font-size: 12px;
+                            overflow: hidden;
+                            padding: 6px 3px 3px;
+                            width: 70px;
+                            min-width: 70px;
+                            max-width: 70px;
+                            text-align: center;
+                            border: 1px solid rgb(191, 191, 191);
+                            background-color: rgb(245, 245, 245);
+                            color: rgba(0, 0, 0, 0.75);
+                            font-weight: 700;
+                            box-sizing: border-box;
+                          "
+                        >
+                          <span>Var1</span>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th
+                          style="
+                            text-overflow: ellipsis;
+                            font-family: Arial, sans-serif;
+                            font-size: 12px;
+                            overflow: hidden;
+                            padding: 6px 3px 3px;
+                            width: 34px;
+                            text-align: left;
+                            border-width: 0px 1px 1px;
+                            border-style: solid;
+                            border-color: rgb(191, 191, 191);
+                            border-image: initial;
+                            background-color: rgb(245, 245, 245);
+                            color: rgba(0, 0, 0, 0.75);
+                            font-weight: 700;
+                            box-sizing: border-box;
+                          "
+                        >
+                          <span>1&nbsp;压力</span>
+                        </th>
+                        <td
+                          style="
+                            text-overflow: ellipsis;
+                            font-family: Arial, sans-serif;
+                            font-size: 12px;
+                            overflow: hidden;
+                            padding: 3px;
+                            width: 70px;
+                            min-width: 70px;
+                            max-width: 70px;
+                            text-align: right;
+                            border-width: 0px 1px 1px;
+                            border-style: solid;
+                            border-color: rgb(191, 191, 191);
+                            border-image: initial;
+                          "
+                        >
+                          <span>0</span>
+                        </td>
+                        <td
+                          style="
+                            text-overflow: ellipsis;
+                            font-family: Arial, sans-serif;
+                            font-size: 12px;
+                            overflow: hidden;
+                            padding: 3px;
+                            width: 70px;
+                            min-width: 70px;
+                            max-width: 70px;
+                            text-align: right;
+                            border-width: 0px 1px 1px;
+                            border-style: solid;
+                            border-color: rgb(191, 191, 191);
+                            border-image: initial;
+                          "
+                        >
+                          <span>0.5000</span>
+                        </td>
+                        <td
+                          style="
+                            text-overflow: ellipsis;
+                            font-family: Arial, sans-serif;
+                            font-size: 12px;
+                            overflow: hidden;
+                            padding: 3px;
+                            width: 70px;
+                            min-width: 70px;
+                            max-width: 70px;
+                            text-align: right;
+                            border-width: 0px 1px 1px;
+                            border-style: solid;
+                            border-color: rgb(191, 191, 191);
+                            border-image: initial;
+                          "
+                        >
+                          <span>1.0000</span>
+                        </td>
+                        <td
+                          style="
+                            text-overflow: ellipsis;
+                            font-family: Arial, sans-serif;
+                            font-size: 12px;
+                            overflow: hidden;
+                            padding: 3px;
+                            width: 70px;
+                            min-width: 70px;
+                            max-width: 70px;
+                            text-align: right;
+                            border-width: 0px 1px 1px;
+                            border-style: solid;
+                            border-color: rgb(191, 191, 191);
+                            border-image: initial;
+                          "
+                        >
+                          <span>1.5000</span>
+                        </td>
+                        <td
+                          style="
+                            text-overflow: ellipsis;
+                            font-family: Arial, sans-serif;
+                            font-size: 12px;
+                            overflow: hidden;
+                            padding: 3px;
+                            width: 70px;
+                            min-width: 70px;
+                            max-width: 70px;
+                            text-align: right;
+                            border-width: 0px 1px 1px;
+                            border-style: solid;
+                            border-color: rgb(191, 191, 191);
+                            border-image: initial;
+                          "
+                        >
+                          <span>2.0000</span>
+                        </td>
+                        <td
+                          style="
+                            text-overflow: ellipsis;
+                            font-family: Arial, sans-serif;
+                            font-size: 12px;
+                            overflow: hidden;
+                            padding: 3px;
+                            width: 70px;
+                            min-width: 70px;
+                            max-width: 70px;
+                            text-align: right;
+                            border-width: 0px 1px 1px;
+                            border-style: solid;
+                            border-color: rgb(191, 191, 191);
+                            border-image: initial;
+                          "
+                        >
+                          <span>2.5000</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th
+                          style="
+                            text-overflow: ellipsis;
+                            font-family: Arial, sans-serif;
+                            font-size: 12px;
+                            overflow: hidden;
+                            padding: 6px 3px 3px;
+                            width: 34px;
+                            text-align: left;
+                            border-width: 0px 1px 1px;
+                            border-style: solid;
+                            border-color: rgb(191, 191, 191);
+                            border-image: initial;
+                            background-color: rgb(245, 245, 245);
+                            color: rgba(0, 0, 0, 0.75);
+                            font-weight: 700;
+                            box-sizing: border-box;
+                          "
+                        >
+                          <span>2&nbsp;原始数据</span>
+                        </th>
+                        <td
+                          style="
+                            text-overflow: ellipsis;
+                            font-family: Arial, sans-serif;
+                            font-size: 12px;
+                            overflow: hidden;
+                            padding: 3px;
+                            width: 70px;
+                            min-width: 70px;
+                            max-width: 70px;
+                            text-align: right;
+                            border-width: 0px 1px 1px;
+                            border-style: solid;
+                            border-color: rgb(191, 191, 191);
+                            border-image: initial;
+                          "
+                        >
+                          <span>0.0031</span>
+                        </td>
+                        <td
+                          style="
+                            text-overflow: ellipsis;
+                            font-family: Arial, sans-serif;
+                            font-size: 12px;
+                            overflow: hidden;
+                            padding: 3px;
+                            width: 70px;
+                            min-width: 70px;
+                            max-width: 70px;
+                            text-align: right;
+                            border-width: 0px 1px 1px;
+                            border-style: solid;
+                            border-color: rgb(191, 191, 191);
+                            border-image: initial;
+                          "
+                        >
+                          <span>0.2023</span>
+                        </td>
+                        <td
+                          style="
+                            text-overflow: ellipsis;
+                            font-family: Arial, sans-serif;
+                            font-size: 12px;
+                            overflow: hidden;
+                            padding: 3px;
+                            width: 70px;
+                            min-width: 70px;
+                            max-width: 70px;
+                            text-align: right;
+                            border-width: 0px 1px 1px;
+                            border-style: solid;
+                            border-color: rgb(191, 191, 191);
+                            border-image: initial;
+                          "
+                        >
+                          <span>0.4014</span>
+                        </td>
+                        <td
+                          style="
+                            text-overflow: ellipsis;
+                            font-family: Arial, sans-serif;
+                            font-size: 12px;
+                            overflow: hidden;
+                            padding: 3px;
+                            width: 70px;
+                            min-width: 70px;
+                            max-width: 70px;
+                            text-align: right;
+                            border-width: 0px 1px 1px;
+                            border-style: solid;
+                            border-color: rgb(191, 191, 191);
+                            border-image: initial;
+                          "
+                        >
+                          <span>0.6006</span>
+                        </td>
+                        <td
+                          style="
+                            text-overflow: ellipsis;
+                            font-family: Arial, sans-serif;
+                            font-size: 12px;
+                            overflow: hidden;
+                            padding: 3px;
+                            width: 70px;
+                            min-width: 70px;
+                            max-width: 70px;
+                            text-align: right;
+                            border-width: 0px 1px 1px;
+                            border-style: solid;
+                            border-color: rgb(191, 191, 191);
+                            border-image: initial;
+                          "
+                        >
+                          <span>0.8000</span>
+                        </td>
+                        <td
+                          style="
+                            text-overflow: ellipsis;
+                            font-family: Arial, sans-serif;
+                            font-size: 12px;
+                            overflow: hidden;
+                            padding: 3px;
+                            width: 70px;
+                            min-width: 70px;
+                            max-width: 70px;
+                            text-align: right;
+                            border-width: 0px 1px 1px;
+                            border-style: solid;
+                            border-color: rgb(191, 191, 191);
+                            border-image: initial;
+                          "
+                        >
+                          <span>0.9995</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th
+                          style="
+                            text-overflow: ellipsis;
+                            font-family: Arial, sans-serif;
+                            font-size: 12px;
+                            overflow: hidden;
+                            padding: 6px 3px 3px;
+                            width: 34px;
+                            text-align: left;
+                            border-width: 0px 1px 1px;
+                            border-style: solid;
+                            border-color: rgb(191, 191, 191);
+                            border-image: initial;
+                            background-color: rgb(245, 245, 245);
+                            color: rgba(0, 0, 0, 0.75);
+                            font-weight: 700;
+                            box-sizing: border-box;
+                          "
+                        >
+                          <span>3&nbsp;端点直线法</span>
+                        </th>
+                        <td
+                          style="
+                            text-overflow: ellipsis;
+                            font-family: Arial, sans-serif;
+                            font-size: 12px;
+                            overflow: hidden;
+                            padding: 3px;
+                            width: 70px;
+                            min-width: 70px;
+                            max-width: 70px;
+                            text-align: right;
+                            border-width: 0px 1px 1px;
+                            border-style: solid;
+                            border-color: rgb(191, 191, 191);
+                            border-image: initial;
+                          "
+                        >
+                          <span>0.0031</span>
+                        </td>
+                        <td
+                          style="
+                            text-overflow: ellipsis;
+                            font-family: Arial, sans-serif;
+                            font-size: 12px;
+                            overflow: hidden;
+                            padding: 3px;
+                            width: 70px;
+                            min-width: 70px;
+                            max-width: 70px;
+                            text-align: right;
+                            border-width: 0px 1px 1px;
+                            border-style: solid;
+                            border-color: rgb(191, 191, 191);
+                            border-image: initial;
+                          "
+                        >
+                          <span>0.2024</span>
+                        </td>
+                        <td
+                          style="
+                            text-overflow: ellipsis;
+                            font-family: Arial, sans-serif;
+                            font-size: 12px;
+                            overflow: hidden;
+                            padding: 3px;
+                            width: 70px;
+                            min-width: 70px;
+                            max-width: 70px;
+                            text-align: right;
+                            border-width: 0px 1px 1px;
+                            border-style: solid;
+                            border-color: rgb(191, 191, 191);
+                            border-image: initial;
+                          "
+                        >
+                          <span>0.4016</span>
+                        </td>
+                        <td
+                          style="
+                            text-overflow: ellipsis;
+                            font-family: Arial, sans-serif;
+                            font-size: 12px;
+                            overflow: hidden;
+                            padding: 3px;
+                            width: 70px;
+                            min-width: 70px;
+                            max-width: 70px;
+                            text-align: right;
+                            border-width: 0px 1px 1px;
+                            border-style: solid;
+                            border-color: rgb(191, 191, 191);
+                            border-image: initial;
+                          "
+                        >
+                          <span>0.6009</span>
+                        </td>
+                        <td
+                          style="
+                            text-overflow: ellipsis;
+                            font-family: Arial, sans-serif;
+                            font-size: 12px;
+                            overflow: hidden;
+                            padding: 3px;
+                            width: 70px;
+                            min-width: 70px;
+                            max-width: 70px;
+                            text-align: right;
+                            border-width: 0px 1px 1px;
+                            border-style: solid;
+                            border-color: rgb(191, 191, 191);
+                            border-image: initial;
+                          "
+                        >
+                          <span>0.8002</span>
+                        </td>
+                        <td
+                          style="
+                            text-overflow: ellipsis;
+                            font-family: Arial, sans-serif;
+                            font-size: 12px;
+                            overflow: hidden;
+                            padding: 3px;
+                            width: 70px;
+                            min-width: 70px;
+                            max-width: 70px;
+                            text-align: right;
+                            border-width: 0px 1px 1px;
+                            border-style: solid;
+                            border-color: rgb(191, 191, 191);
+                            border-image: initial;
+                          "
+                        >
+                          <span>0.9995</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th
+                          style="
+                            text-overflow: ellipsis;
+                            font-family: Arial, sans-serif;
+                            font-size: 12px;
+                            overflow: hidden;
+                            padding: 6px 3px 3px;
+                            width: 34px;
+                            text-align: left;
+                            border-width: 0px 1px 1px;
+                            border-style: solid;
+                            border-color: rgb(191, 191, 191);
+                            border-image: initial;
+                            background-color: rgb(245, 245, 245);
+                            color: rgba(0, 0, 0, 0.75);
+                            font-weight: 700;
+                            box-sizing: border-box;
+                          "
+                        >
+                          <span>4&nbsp;最小二乘法</span>
+                        </th>
+                        <td
+                          style="
+                            text-overflow: ellipsis;
+                            font-family: Arial, sans-serif;
+                            font-size: 12px;
+                            overflow: hidden;
+                            padding: 3px;
+                            width: 70px;
+                            min-width: 70px;
+                            max-width: 70px;
+                            text-align: right;
+                            border-width: 0px 1px 1px;
+                            border-style: solid;
+                            border-color: rgb(191, 191, 191);
+                            border-image: initial;
+                          "
+                        >
+                          <span>0.0030</span>
+                        </td>
+                        <td
+                          style="
+                            text-overflow: ellipsis;
+                            font-family: Arial, sans-serif;
+                            font-size: 12px;
+                            overflow: hidden;
+                            padding: 3px;
+                            width: 70px;
+                            min-width: 70px;
+                            max-width: 70px;
+                            text-align: right;
+                            border-width: 0px 1px 1px;
+                            border-style: solid;
+                            border-color: rgb(191, 191, 191);
+                            border-image: initial;
+                          "
+                        >
+                          <span>0.2022</span>
+                        </td>
+                        <td
+                          style="
+                            text-overflow: ellipsis;
+                            font-family: Arial, sans-serif;
+                            font-size: 12px;
+                            overflow: hidden;
+                            padding: 3px;
+                            width: 70px;
+                            min-width: 70px;
+                            max-width: 70px;
+                            text-align: right;
+                            border-width: 0px 1px 1px;
+                            border-style: solid;
+                            border-color: rgb(191, 191, 191);
+                            border-image: initial;
+                          "
+                        >
+                          <span>0.4015</span>
+                        </td>
+                        <td
+                          style="
+                            text-overflow: ellipsis;
+                            font-family: Arial, sans-serif;
+                            font-size: 12px;
+                            overflow: hidden;
+                            padding: 3px;
+                            width: 70px;
+                            min-width: 70px;
+                            max-width: 70px;
+                            text-align: right;
+                            border-width: 0px 1px 1px;
+                            border-style: solid;
+                            border-color: rgb(191, 191, 191);
+                            border-image: initial;
+                          "
+                        >
+                          <span>0.6008</span>
+                        </td>
+                        <td
+                          style="
+                            text-overflow: ellipsis;
+                            font-family: Arial, sans-serif;
+                            font-size: 12px;
+                            overflow: hidden;
+                            padding: 3px;
+                            width: 70px;
+                            min-width: 70px;
+                            max-width: 70px;
+                            text-align: right;
+                            border-width: 0px 1px 1px;
+                            border-style: solid;
+                            border-color: rgb(191, 191, 191);
+                            border-image: initial;
+                          "
+                        >
+                          <span>0.8000</span>
+                        </td>
+                        <td
+                          style="
+                            text-overflow: ellipsis;
+                            font-family: Arial, sans-serif;
+                            font-size: 12px;
+                            overflow: hidden;
+                            padding: 3px;
+                            width: 70px;
+                            min-width: 70px;
+                            max-width: 70px;
+                            text-align: right;
+                            border-width: 0px 1px 1px;
+                            border-style: solid;
+                            border-color: rgb(191, 191, 191);
+                            border-image: initial;
+                          "
+                        >
+                          <span>0.9993</span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="inlineWrapper"><div class="S8"></div></div>
+      </div>
+      <div class="S4"><span>绘图</span></div>
+      <div class="CodeBlock">
+        <div class="inlineWrapper">
+          <div class="S1">
+            <span style="white-space: pre"
+              ><span>hold </span
+              ><span style="color: rgb(170, 4, 249)">on </span></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S2">
+            <span style="white-space: pre"
+              ><span>plot(x,y,</span
+              ><span style="color: rgb(170, 4, 249)">'x'</span
+              ><span>)</span></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S2">
+            <span style="white-space: pre"><span>plot(x,y_1)</span></span>
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S2">
+            <span style="white-space: pre"><span>plot(x,y_2);</span></span>
+          </div>
+        </div>
+        <div class="inlineWrapper">
+          <div class="S2">
+            <span style="white-space: pre"
+              ><span>legend(</span
+              ><span style="color: rgb(170, 4, 249)">"原始数据"</span
+              ><span>,strcat(</span
+              ><span style="color: rgb(170, 4, 249)">'端点直线法k='</span
+              ><span>,num2str(k),</span
+              ><span style="color: rgb(170, 4, 249)">';b='</span
+              ><span>,num2str(b)),strcat(</span
+              ><span style="color: rgb(170, 4, 249)">'最小而乘法k='</span
+              ><span>,num2str(k),</span
+              ><span style="color: rgb(170, 4, 249)">';b='</span
+              ><span>,num2str(b)))</span></span
+            >
+          </div>
+        </div>
+        <div class="inlineWrapper outputs">
+          <div class="S6">
+            <span style="white-space: pre"
+              ><span>hold </span
+              ><span style="color: rgb(170, 4, 249)">off</span></span
+            >
+          </div>
+          <div class="S7">
+            <div
+              class="inlineElement eoOutputWrapper embeddedOutputsFigure"
+              uid="892604B2"
+              data-testid="output_1"
+              style="width: 1146px"
+            >
+              <div class="figureElement eoOutputContent">
+                <img
+                  class="figureImage figureContainingNode"
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAjAAAAGkCAYAAAAv7h+nAAAgAElEQVR4AezBf1zW9b34/8feu7q8RNNdchhBmT/yxsvKiWRkuCRYZPgeXYqBzWNuUV+tuSxPa8lcrMPHOE1xHHPkVPIoh5EziByx60bcCCbOOAwLLaY+GRMdiLuOu2BxIV3Dq3ff2/uP63bj5rE6nU+7fQ72ut+NjzRN0zRN00YZA03TNE3TtFHGQNM0TdM0bZQx0DRN0zRNG2UMNE3TNE3TRhkDTdM0TdO0UcZA0zRN0zRtlDHQNE3TNE0bZQw0TdM0TdNGGQNN0zRN07RRxkDTNE3TNG2UMdA0TdM0TRtlDDRN0zRN00YZA03TNE3TtFHGQNM0TdM0bZQx0DRN0zRNG2UMNE3TNE3TRhkDTdM0TdO0UcZA0zRN0zRtlDHQNE3TNE0bZQw0TdM0TdNGGQNN0zRN07RRxkDTNE3TNG2UMdA0TdM0TRtlDDRN0zRN00YZA03TNE3TtFHGQNM0TdM0bZQx+II7dOgQmqZpmqaNLgZfYNu3b2fDhg1omqZp2pXmS99v4Dd/7Gek031BphW8xZXA4Avor3/9Kz/84Q956aWX0DRN07QrUeOaBFK3t/GbP/ZjO90XJPXn77DnWzdyJTD4Atq6dSuTJk3iX/7lX9A0TdO0K1HKDW4a1ySQur2N031BUn/+Dnu+dSMpN7i5Ehh8Af34xz/mBz/4AWPHjuW/QymFUgqlFEopNE3TNG00SHKc5O2bn2ZawVs8u3AaKTe4uVIYfAEZhsFnJSKICCKCpmmapv1v94Fs5UTL41Ra99O4JoGcX57gN3/s50phoGmapmnaFcMa6uED2YocK+fxP/2Yhan/Hyk3uGlck0Dq9jZ+88d+rgQGmqZpmqZdEayhHgbeWo4t8w8v8H8y7yDlBje2lBvcNK5JIHV7G1cCA03TNE3TRr0PTlQw8NZyxky+j7FqHV0/mk/KDW5GSrnBzUc//QZXAgNN0zRN00ati//ZzQeylb+d3caE+fsYq9bxRWDwBXbnnXdy6NAhNE3TNG00soZ6+EBe4G/drzJh/j6MiOv4ojDQNE3TNG3UsYZ6GHhrOVd99Tq+knYII+I6vkgMNE3TNE0bVQbf3srAW8sZM/k+xqp1fBEZaJqmaZo2KlhDPXwgWwn1v8qE+fsYq9bxRWWgaZqmadr/etZQD/6q+7n4lxa+knYII+I6vsgMNE37wlFKoZRCKYVSCqUUSimUUiilUEqhlEIphVIKpRRKKZRSKKVQSqGUQimFUgqlFEoplFIopVBKoZRCKYVSCqUUSimUUiilUEqhlEIphVIKpRRKKZRSKKVQSqGUQimFUgqlFEoplFIopVBKoZRCKYVSCqUUSimUUiilUEqhlEIphVIKpRRKKZRSKKVQSqGUQimFUgqlFEoplFIopVBKoZRCKYVSCqUUSimUUiilUEqhlEIphVIKpRRKKZRSKKVQSqGUQimFUgqlFEoplFIopVBKoZRCKYVSCqUUSimUUiilUEqhlEIphVIKpRRKKZRSKKVQSqGUQimFUgqlFEoplFIopVBKoZRCKYVSCqUUSimUUiilUEqhlEIphVIKpRRKKZRSKKVQSqGUQimFUgqlFEoplFIopVBKoZRCKYVSCqUUSimUUiilUEqhlEIphVIKpRRKKZRSKKVQSqGUQimFUgqlFEoplFIopVBKoZRCKYVSCqUUSimUUiilUEqhlEIphVIKpRRKKZRSKKVQSqGUQimFUgqlFEoplFIopVBKoZRCKYVSCqUUSimUUiilUEqhlEIphVIKpRRKKZRSKKVQSqGUQimFUgqlFEoplFIopVBKoZRCKYVSCqUUSimUUiilUEqhlEIphVIKpRRKKZRSKKVQSqGUQimFUgqlFEopbky4izs2/oXEh95BKcUXnYGmaV9IIoKIICKICCKCiCAiiAgigoggIogIIoKIICKICCKCiCAiiAgigoggIogIIoKIICKICCKCiCAiiAgigoggIogIIoKIICKICCKCiCAiiAgigoggIogIIoKIICKICCKCiCAiiAgigoggIogIIoKIICKICCKCiCAiiAgigoggIogIIoKIICKICCKCiCAiiAgigoggIogIIoKIICKICCKCiCAiiAgigoggIogIIoKIICKICCKCiCAiiAgigoggIogIIoKIICKICCKCiCAiiAgigoggIogIIoKIICKICCKCiCAiiAgigoggIogIIoKIICKICCKCiCAiiAgigoggIogIIoKIICKICCKCiCAiiAgigoggIogIIoKIICKICCKCiCAiiAgigoggIogIIoKIICKICCKCiCAiiAgigoggIogIIoKIICKICCKCiCAiiAgigoggIogIIoKIICKICCKCiCAi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s5/Xi0Qiwbe+9S0uvPBC0uk0b37zm7n//vuZP38+q1ev5tlnn6UukUhw7rnnUtff309PTw8HDx4khMBwIQSOGBoa4liee+45oijiueeeY7hHHnmEu+++my9+8YtccMEF1Go16mbNmsUnPvEJ/uRP/oS/+qu/4umnn6buF7/4BSEE6j73uc9Rq9XYvn073/nOd3j44YeZOnUqb33rWzna1VdfTUtLCzfeeCMnMnnyZO644w4uu+wyFi5cyN13382qVas44pprrmH79u0sWLCAa6+9lksuuYSrr76aj370o9x7773UzZ07l/nz53PJJZfwlre8hZ/85CfccsstXHXVVbz97W/HzLj22mt55zvfyX333UcIgauuuoprr72Wiy++mIULF/LXf/3XrFu3jhdyzTXXsH37do645JJLaGtr4+qrr+bDH/4w9913HycyefJk7rjjDi677DIWLlzI3XffzapVqzjimmuuYfv27UyePJk77riDyy67jIULF3L33XezatUq6iZPnswdd9zBZZddxsKFC7n77rtZtWoVdWvXruWpp56ipaWFc845h3POOYdzzjmHuXPnMn/+fC655BLe8pa38JOf/IRbbrmFuubmZr7+9a/zxje+kWuvvZZly5bR0dFB3eTJk7njjju47LLLWLhwIXfffTerVq1iwYIFXHvttVxyySVcffXVfPSjH+Xee+9Fji0gIjKKTJgwgW9+85t84xvfYOnSpcyYMYNqtcr3v/99rr/+ej73uc/x5je/mb/4i7/g4MGDDDdhwgTOO+88vvKVr/DmN7+Z43nmmWe44oorqPv85z9P3cyZM8lkMnR0dPDYY49x7rnnUlcsFgkhkM1maWpqou6ZZ55h3Lhx1M2YMYMdO3bw+c9/nle+8pXUzZs3j9/93d+l7tlnnyWdTnPJJZewePFiFixYwEc+8hHe/va3U9fa2sqvf/1rjvjHf/xH7rzzTl7I9ddfz759+1i/fj2PPPIIU6dO5YhyuczVV19N3Ze//GV2797NunXr2LdvH3PmzOGIr33ta+zYsYONGzfyox/9iAkTJlB3yy23sG/fPu655x6KxSILFizgiFWrVrF3717Wr1/Pnj17uOSSSzhaU1MT5XKZI9asWcPkyZOpa21tpa+vj76+PtatW8e+fft4wxvewAu5/vrr2bdvH+vXr+eRRx5h6tSpHFEul7n66qupu/7669m3bx/r16/nkUceYerUqRxx/fXXs2/fPtavX88jjzzC1KlTqfvqV7/K888/z/PPP8/zzz/P888/z/PPP0/d1772NXbs2MHGjRv50Y9+xIQJEzhi8eLF7Nu3j3vuuYfHH3+c2bNnc8T111/Pvn37WL9+PY888ghTp06l7stf/jK7d+9m3bp17Nu3jzlz5iDHFhARGWWampoY7h/+4R/40z/9U175yldS19raSmdnJxdccAFHmz17Ng8//DDTp0/neC644ALe+c53UnfRRRdR98pXvpLzzjuPD3zgA/T09HBEc3MzM2bMYLgPfehDzJ07l+Gampo4Yu7cubzhDW+g7pZbbuE973kP06dPZ7hsNsvLFUIgkUjwQs4991wSiQTHcu6553LeeedxtBACiUSCYxk3bhyJRIIXY/bs2RwtkUjwYoQQSCQSvJAQAolEgmMJIZBIJHgxzj33XM477zyOJYRAIpHgWEIIJBIJjnbuueeSSCSQEwuIiIxy5513HiPJueeei5y8pUuXIvJiBURERERGmYCIjElmhplhZpgZZoaZYWaYGWaGmWFmmBlmhplhZpgZZoaZYWaYGWaGmWFmmBlmhplhZpgZZoaZYWaYGWaGmWFmmBlmhplhZpgZZoaZYWaYGWaGmWFmmBlmhplhZpgZZoaZYWaYGWaGmWFmmBlmhplhZpgZZoaZYWaYGWaGmWFmmBlmhplhZpgZZoaZYWaYGWaGmWFmmBlmhplhZpgZZoaZYWaYGWaGmWFmmBlmhplhZpgZZoaZYWaYGWaGmWFmmBlmhplhZpgZZoaZYWaYGWaGmWFmmBlmhplhZpgZZoaZYWaYGWaGmWFmmBlmhplhZpgZZoaZYWaYGWaGmWFmmBlmhplhZpgZZoaZYWaYGWaGmWFmmBlmhplhZpgZZoaZYWaYGWaGmWFmmBlmhplhZpgZZoaZYWaYGWaGmWFmmBlmhplhZpgZZoaZYWaYGWaGmWFmmBlmhplhZpgZZoaZYWaYGWaGmWFmmBlmhplhZpgZZoaZYWaYGWaGmWFmmBlmhplhZpgZZoaZYWaYGWaGmWFmmBlmhplhZpgZZoaZYWaYGWaGmWFmmBkCAREZc9wdd8fdcXfcHXfH3XF33B13x91xd9wdd8fdcXfcHXfH3XF33B13x91xd9wdd8fdcXfcHXfH3XF33B13x91xd9wdd8fdcXfcHXfH3XF33B13x91xd9wdd8fdcXfcHXfH3XF33B13x91xd9wdd8fdcXfcHXfH3XF33B13x91xd9wdd8fdcXfcHXfH3XF33B13x91xd9wdd8fdcXfcHXfH3XF33B13x91xd9wdd8fdcXfcHXfH3XF33B13x91xd9wdd8fdcXfcHXfH3XF33B13x91xd9wdd8fdcXfcHXfH3XF33B13x91xd9wdd8fdcXfcHXfH3XF33B13x91xd9wdd8fdcXfcHXfH3XF33B13x91xd9wdd8fdcXfcHXfH3XF33B13x91xd9wdd+fh7y9j+x1T+OnmW3B33B13x91xd9wdd8fdcXfcHXfH3XF33B13x91xd9wdd8fdcXfcHXfH3XF33B13x91xd9wdd8fdcXfcHXfH3XF33B13x91xd9wdd8fdcXfcHXfH3XF33B13x91xd9wdd8fdcXfcHXfH3XF33B13x91xd9wdd8fdcXfGukADKRaLbN68GXfnhezfv5/Nmzfz6KOPIiIiZ8c5n7yfBx7vZ7ioUuKm2z/OYLGLZEueWPMiRI4WaBAbNmygvb2djRs3smzZMtauXcvxdHR08J73vIeNGzfyiU98gk9/+tOIiMiZt2X5TBbcuZMHHu+nLqqU+OkP3sFn//jVpFp7CIk0IscSaAC1Wo2VK1fS2dnJ6tWrWbduHR0dHezfv5+jRVHEmjVr+Na3vsXq1au57777+N73vsejjz6KiIicWfOnTWDL8pksuHMn1Ue/S7mQwS59D3HLInIigQawdetWUqkU06dPp27ixInMmzePbdu2cSzPP/885513HnXxeJwQAs8++ywnYmaYGWaGiIicOpf/1mEeWfSv+L+tYsfUvyVuWUReSKABDAwMMGPGDIZrampiz549HC2EwMqVK1m+fDlr167lve99L4sXL+bSSy/lRNwdd8fdERGRUyOqlKj6Wi74zT8zMGsTf/StJ3ng8X5EXkigAdRqNUIIDBdCIIoijqWvr49EIsHkyZNJpVI8/vjjVCoVRETkzIkqJcqFDP94YBwPv/r7zJ82gS3LZ7Lgzp088Hg/IicSaACxWIxarcZwURQxbtw4jnb//fezc+dO7rnnHt797ndz1113UffNb34TERE5M6qeo1zIkP/l5Vw89ybmT5tA3fxpE9iyfCYL7tyJyIkEGsCUKVPYvXs3w/X39zNr1iyO1t/fz2te8xpe8YpXcMRFF11EsVhEREROr6hSouo5BotdJFvyLHvvl5k/bQLDzZ82gee/cgUiJxJoALNnz6auu7ubur1791IoFJg7dy51u3bt4uDBg9S99rWvpbe3l5///OfUlctl+vr6uOyyyxARkdMnqpR4ev1ihp7aTqq1h5BII/JSBRpACIE1a9awYsUKlixZQiaT4dZbb2XSpEnU5XI5ent7qbv44otZsWIF73rXu1iyZAlXXHEFl19+OW1tbYiIyOkRVUoc3nkDTbOvI3l5HpGXK9Ag5syZQ29vL52dM5EW5gAAIABJREFUnfT19bFw4UKO6OjoYNGiRRyxePFi+vr66OzspK+vj5tvvhkRETk9qp6jXMgwftIc4pZF5FQIiIiInAZRpUTVcwwWu0i25IlbFpFTJSAiInKKRZUS5UKGulRrDyGRRuRUCoiIiJxCgwceZGBTO7HmNuKWReR0CIiIiJwCQ08WqXqO6t4b+a03rSFuWUROl4CIiMjLFFVKPNffxWCxi2RLnvGT3ojI6RQQERF5GaJKiXIhQ12qtYeQSCNyugVEREReonL3bZQLGWLNbcQti8iZEhAREXmRokqJqueIhtaTbMkTtywiZ1JARETkRYgqJZ5ev5ihp7aTau0hJNKInGkBERGRkxRVSpQLGZpmX0fy8jwiZ0tARETkJFQ9R7mQIdbcRtyyiJxNARERkROIKiWqnmOw2EWyJU/csoicbQEREZHjiColyoUMdanWHkIijchIEBARETmGwQMPMrCpnVhzG3HLIjKSBERERI5S9RzVvTdy/qwsccsiMtIERERE/ktUKVH1HIPFLpIteWLNixAZiQIiIiL/V1QpUS5kqEu19hASaURGqoCIiIx55e7bKBcyxJrbiFsWkZEuICIiY9bQk0WqniMaWk+yJU/csoiMBgERERmTokqJqq9lsNhFsiVPSKQRGS0CIiIy5kSVEuVChvFT0qRaewiJNCKjSUBERMaUqucoFzLEmtuIWxaR0SggIiJjQlQpUfUcg8Uuki154pZFZLQKNJBiscjmzZtxd47n0KFD9PX10dfXR19fH319ffT19bF//35ERBpVVCnx9PrFRJUnSLX2EBJpREazQIPYsGED7e3tbNy4kWXLlrF27VqOpa+vj6VLl7J06VKWLl3K0qVLed/73se3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kjAtCUlIQhKSkIQkJCEJSUhCEpKQhCQkIQlJSEISkpCEJCQhCUlIQhKSkIQkJCEJSUhCEpKQhCQkIQlJSEISkpCEJCQhCUlIQhKSkIQkJCEJSUhCEpKQhCQkIQlJSEISkpCEJCQhCUlIQhKSkIQkJCEJSUhCEpKQhGlJSEISkpCEJCQhCUlIQhKSkIQkJCEJSUhCEpKQhCQkIQlJSEISkpCEJCQhCUlIQhKSkIQkJCEJSUhCEpKQhCQkIQlJSEISkpCEJCQhCUlIQhKSkIQkJCEJSUhCEpKQhCQkIQlJSEISkpCEJCQhCUlIQhKSkIQkTEtCEpKQhCQkIQlJSEISkpCEJCQhCUlIQhKSkIQkJCEJSUhCEpKQhCQkIQlJSEISkpCEJCQhCUlIQhKSkIQkJCEJSUhCEpKQhCQkIQlJSEISkpCEJCQhCUlIQhKSkIQkJCEJSUhCEpKQhCQkIQlJSEISkpCEJPx/1fAHc+/ePZYtW8ZMCxYs4Nq1a8z03cQD1hxpc+zFZzj5739l+LU/89+r/5WP/+OvqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqPx/1PAH0+l0aJqGmZqmYWpqipnWHGlz7MVn+MvSPzHtL0v/xPBrf2bNR/9JKaWUUv5vNfzBzJs3j06nw0xT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"
+                  style="width: 560px"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <!-- 
+##### SOURCE BEGIN #####
+%% 传感器作业1-6
+
+x=[0,0.5,1.0,1.5,2.0,2.5];
+y1f=[0.0020,0.2015,0.4005,0.6000,0.7995,1.0000];
+y1b=[0.0030,0.2020,0.4020,0.6010,0.8005,1.0000];
+y2f=[0.0025,0.2020,0.4010,0.6000,0.7995,0.9995];
+y2b=[0.0035,0.2030,0.4020,0.6015,0.8005,0.9995];
+y3f=[0.0035,0.2020,0.4010,0.6000,0.7995,0.9990];
+y3b=[0.0040,0.2030,0.4020,0.6010,0.8005,0.9990];
+%% 
+% 求出平均值：
+
+y=mean([y1f;y1b;y2f;y2b;y3f;y3b]);
+%% 
+% 使用“端点直线法”
+
+k=(y(end)-y(1))/(x(end)-x(1));
+b=y(1)-k*x(1);
+y_1=k*x+b;
+%% 
+% 使用最小二乘法
+
+coefficient=polyfit(x,y,1) ;
+k=coefficient(1);b=coefficient(2);
+y_2=k*x+b;
+%% 
+% 数据
+
+name={'压力';'原始数据';'端点直线法';'最小二乘法'};
+data=table([x;y;y_1;y_2]);
+data.Properties.RowNames = name
+
+%% 
+% 绘图
+
+hold on 
+plot(x,y,'x')
+plot(x,y_1)
+plot(x,y_2);
+legend("原始数据",strcat('端点直线法k=',num2str(k),';b=',num2str(b)),strcat('最小而乘法k=',num2str(k),';b=',num2str(b)))
+hold off
+##### SOURCE END #####
+-->
+    </div>
+  </body>
+</html>
