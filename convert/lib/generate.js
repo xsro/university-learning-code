@@ -122,7 +122,7 @@ async function generate(
   await fs.writeFile(
     resolve(publicDir, "index.html"),
     html.replace(
-      "<div id='content'> </div>",
+      '<div id="content"></div>',
       "<div id='content'>" + content + " </div>"
     )
   );
