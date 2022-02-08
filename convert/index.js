@@ -10,32 +10,41 @@ const projectDir = resolve(dirname, "..");
 const publicDir = resolve(dirname, "public");
 
 if (!fs.existsSync(publicDir)) {
-    fs.mkdirSync(publicDir)
+  fs.mkdirSync(publicDir);
 }
 
 if (process.argv.includes("gen")) {
-    const shrinkPath = resolve(dirname, "mlx2html-lock.txt");
-    const taskPath = resolve(dirname, "public", "matlab_task.txt");
-    const templatePath = resolve(dirname, 'lib', 'index.html')
-    generate(projectDir, publicDir, shrinkPath, taskPath, templatePath)
+  const shrinkPath = resolve(dirname, "mlx2html-lock.txt");
+  const taskPath = resolve(dirname, "public", "matlab_task.txt");
+  const templatePath = resolve(dirname, "lib", "index.html");
+  generate(projectDir, publicDir, shrinkPath, taskPath, templatePath);
 }
 
 if (process.argv.includes("ga")) {
-    assertGA(publicDir);
+  assertGA(publicDir);
 }
 
 if (process.argv.includes("deploy")) {
-    ghpages.publish(publicDir,
-        {
-            src: "**/*.html",
-            history:false,
-            message: "update " + execSync("git rev-parse HEAD", { encoding: "utf-8" })
-        },
-        (err) => {
-            if (err) {
-                console.error(err)
-            } else {
-                console.log("published")
-            }
-        });
+  try {
+    execSync("yarn prettier --write .", { cwd: publicDir });
+  } catch (e) {
+    console.log(e);
+  }
+
+  ghpages.publish(
+    publicDir,
+    {
+      src: "**/*.html",
+      history: false,
+      message:
+        "update " + execSync("git rev-parse HEAD", { encoding: "utf-8" }),
+    },
+    (err) => {
+      if (err) {
+        console.error(err);
+      } else {
+        console.log("published");
+      }
+    }
+  );
 }

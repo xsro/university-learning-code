@@ -1,10 +1,16 @@
+if exist('public','dir')
+    delete public/*.*
+else
+    mkdir public
+end
+
 fprintf('node: generate convert task and index.html\n')
 if ismac
-    !zsh -l -c 'node .\convert\  gen'
+    !zsh -l -c 'node convert  gen'
 elseif isunix
-    !bash -l -c 'node .\convert\  gen'
+    !bash -l -c 'node convert  gen'
 elseif ispc
-    !node .\convert\  gen
+    !node convert  gen
 else
     disp('Platform not supported')
 end
@@ -18,11 +24,11 @@ delete(task)
 if exist('deploy','var')
     fprintf("node: add ga to html and deploy folder public/ to web\n")
     if ismac
-        !zsh -l -c 'node .\convert\ ga deploy'
+        !zsh -l -c 'node convert ga deploy'
     elseif isunix
-        !bash -l -c 'node .\convert\ ga deploy'
+        !bash -l -c 'node convert ga deploy'
     elseif ispc
-        !node .\convert\ ga deploy
+        !node convert ga deploy
     else
         disp('Platform not supported')
     end

@@ -10,7 +10,9 @@
   "scripts": {
     "deploy": "gh-pages -f -d public"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "prettier": "2.5.1"
+  },
   "dependencies": {
     "gh-pages": "^3.2.3"
   }

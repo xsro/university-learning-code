@@ -1,53 +1,59 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
-
-<head>
+  <head>
     <title>university-learning-code</title>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <style type="text/css">
-        h2 {
-            color: gray;
-        }
+      h2 {
+        color: gray;
+      }
 
-        h2 a {
-            color: grey;
-        }
+      h2 a {
+        color: grey;
+      }
 
-        #content {
-            margin-left: 30px;
-        }
+      #content {
+        margin-left: 30px;
+      }
 
-        footer {
-            text-align: center;
-        }
+      footer {
+        text-align: center;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <h1>自动化大学学习代码</h1>
     <details>
-        <summary>简介</summary>
-        <a href='https://github.com/xsro/university-learning-code'><img alt="GitHub forks"
-            src="https://img.shields.io/github/forks/xsro/university-learning-code?style=flat-square"></a>
-        <a href='https://github.com/xsro/university-learning-code'><img alt="GitHub repo size"
-                src="https://img.shields.io/github/repo-size/xsro/university-learning-code?style=flat-square"></a>
-        <img alt="GitHub issues"
-            src="https://img.shields.io/github/issues/xsro/university-learning-code?style=flat-square">
-        <br>
-        这里是在NJUPT学习自动化期间的学习代码，该列表通过脚本自动生成，欢迎PR。
-        仅供参考，不能保证正确性和内容必要性。
-        <br>
+      <summary>简介</summary>
+      <a href="https://github.com/xsro/university-learning-code"
+        ><img
+          alt="GitHub forks"
+          src="https://img.shields.io/github/forks/xsro/university-learning-code?style=flat-square"
+      /></a>
+      <a href="https://github.com/xsro/university-learning-code"
+        ><img
+          alt="GitHub repo size"
+          src="https://img.shields.io/github/repo-size/xsro/university-learning-code?style=flat-square"
+      /></a>
+      <img
+        alt="GitHub issues"
+        src="https://img.shields.io/github/issues/xsro/university-learning-code?style=flat-square"
+      />
+      <br />
+      这里是在NJUPT学习自动化期间的学习代码，该列表通过脚本自动生成，欢迎PR。
+      仅供参考，不能保证正确性和内容必要性。
+      <br />
     </details>
-    <div id='content'> </div>
-    <script> 
-        if(document.location.toString().includes("gitee")){
-                const content=document.getElementById("content")
-                content.innerHTML=content.innerHTML.replace(
-                        /github.com/g,
-                        "gitee.com"
-                    )
-        }
+    <div id="content"></div>
+    <script>
+      if (document.location.toString().includes("gitee")) {
+        const content = document.getElementById("content");
+        content.innerHTML = content.innerHTML.replace(
+          /github.com/g,
+          "gitee.com"
+        );
+      }
     </script>
-</body>
-
+  </body>
 </html>
