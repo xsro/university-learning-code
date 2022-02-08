@@ -35,7 +35,7 @@ if (process.argv.includes("deploy")) {
     publicDir,
     {
       src: "**/*.html",
-      history: false,
+      //   history: false,
       message:
         "update " + execSync("git rev-parse HEAD", { encoding: "utf-8" }),
     },
