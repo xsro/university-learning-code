@@ -2,8 +2,5 @@
     "files.associations": {"*.m": "matlab"},
     "[matlab]": {
         "files.encoding": "gb2312"
-    },
-    "yaml.schemas": {
-        "https://json.schemastore.org/github-workflow.json": "file:///e%3A/gitrepo/university-learning-code/.github/workflows/build.yml"
     }
 }
