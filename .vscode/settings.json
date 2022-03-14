@@ -2,5 +2,8 @@
     "files.associations": {"*.m": "matlab"},
     "[matlab]": {
         "files.encoding": "gb2312"
+    },
+    "yaml.schemas": {
+        "https://json.schemastore.org/github-workflow.json": ".github/workflows/build.yml"
     }
 }
