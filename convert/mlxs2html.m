@@ -11,12 +11,16 @@ function mlxs2html(taskFile,dry_run_convert)
             if dry_run_convert
                 fprintf("dry-run")
             else
-                if exist('export','file')
-                    fprintf("%d: export %s-->%s",i,src,dst)
-                    export(src,dst,CatchError=false,HideCode=false);
-                else
-                    fprintf("%d: openAndConvert %s-->%s",i,src,dst)
-                    matlab.internal.liveeditor.openAndConvert(src,dst);
+                try
+                    if exist('export','file')
+                        fprintf("%d: export %s-->%s",i,src,dst)
+                        export(src,dst,CatchError=false,HideCode=false);
+                    else
+                        fprintf("%d: openAndConvert %s-->%s",i,src,dst)
+                        matlab.internal.liveeditor.openAndConvert(src,dst);
+                    end
+                catch err 
+                    disp(err)
                 end
             end
             fprintf("\n")
