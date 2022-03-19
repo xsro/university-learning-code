@@ -20,7 +20,9 @@ function mlxs2html(taskFile,dry_run_convert)
                         matlab.internal.liveeditor.openAndConvert(src,dst);
                     end
                 catch err 
-                    disp(err)
+                    disp(err.identifier);
+                    disp(err.message);
+                    disp(err.stack);
                 end
             end
             fprintf("\n")
