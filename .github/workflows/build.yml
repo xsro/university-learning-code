@@ -48,6 +48,10 @@ jobs:
           command: convert;
         env:
           DISPLAY: ":99.0"
+      - uses: actions/upload-artifact@v3
+        with:
+          name: convert-errors
+          path: errors.mat
           
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
