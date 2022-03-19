@@ -35,6 +35,8 @@ jobs:
       - name: run shell commands
         run: |
           ls -R /home/runner/.matlab/
+          mkdir /home/runner/.matlab/R2022a/
+          touch /home/runner/.matlab/R2022a/thisMatlab.pem
           cd convert/
           yarn
           
