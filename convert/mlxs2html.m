@@ -13,7 +13,7 @@ function mlxs2html(taskFile,dry_run_convert)
             else
                 if exist('export','file')
                     fprintf("%d: export %s-->%s",i,src,dst)
-                    export(src,dst);
+                    export(src,dst,CatchError=false,HideCode=false);
                 else
                     fprintf("%d: openAndConvert %s-->%s",i,src,dst)
                     matlab.internal.liveeditor.openAndConvert(src,dst);
